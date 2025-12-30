@@ -1,0 +1,150 @@
+{% extends 'Admin/admin-base.html' %}
+{% block title %}Site Settings{% endblock %}
+{% block body %}
+    {% embed "Admin/admin-header.twig" %}{% endembed %}
+    
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-heading"><b>Update Settings</b></h3>
+                </div>
+                <div class="card-body">
+                    {% if error is not empty %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <ul class="mb-0">
+                            {% for error in error %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    
+                    {% if success == 1 %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <p class="mb-0">Settings Updated.</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    <form method="POST" id="form">
+                        <div class="mb-3">
+                            <label for="callphone" class="form-label text-uppercase">Call Phone Number</label>
+                            <input type="text" name="callphone" class="form-control" id="callphone" placeholder="Enter 10 digit phone number" required minlength="10" maxlength="10" data-parsley-error-message="Please enter a valid 10 digit phone number" value="{{ data.sphonecall }}" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="waphone" class="form-label text-uppercase">Whatsapp Phone Number</label>
+                            <input type="text" name="waphone" class="form-control" id="waphone" placeholder="Enter 10 digit phone number" required minlength="10" maxlength="10" data-parsley-error-message="Please enter a valid 10 digit phone number" value="{{ data.sphonewa }}" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-uppercase">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="abc@xyz.com" required data-parsley-error-message="Email is required" value="{{ data.semail }}" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="metatitle" class="form-label text-uppercase">Default Meta Title</label>
+                            <input type="text" name="metatitle" class="form-control" id="metatitle" placeholder="Max. length of 70 characters" required maxlength="70" data-parsley-required-message="Meta Title is required" data-parsley-maxlength-message="Upto 70 characters are allowed" value="{{ data.stitle }}" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="metadesc" class="form-label text-uppercase">Default Meta Description</label>
+                            <textarea name="metadesc" class="form-control" id="metadesc" placeholder="Max. length of 170 characters" required data-parsley-maxlength="170" data-parsley-required-message="Meta Description is required" data-parsley-maxlength-message="Upto 170 characters are allowed">{{ data.sdesc }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="locaddress" class="form-label text-uppercase">Address</label>
+                            <textarea name="locaddress" class="form-control" id="locaddress" placeholder="Location Address" required data-parsley-required-message="Address is required">{{ data.saddress }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-uppercase">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="abc@xyz.com" required
+                                data-parsley-error-message="Email is required" value="{{ data.semail }}" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="facebook" class="form-label text-uppercase">Facebook URL</label>
+                            <input type="text" name="facebook" class="form-control" id="facebook" placeholder="https://facebook.com/xyz" value="{{ data.sfacebook }}" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="twitter" class="form-label text-uppercase">Twitter URL</label>
+                            <input type="text" name="twitter" class="form-control" id="twitter" placeholder="https://twitter.com/xyz" value="{{ data.stwitter }}" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="instagram" class="form-label text-uppercase">Instagram URL</label>
+                            <input type="text" name="instagram" class="form-control" id="instagram" placeholder="https://instagram.com/xyz" value="{{ data.sinsta }}" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="youtube" class="form-label text-uppercase">Youtube URL</label>
+                            <input type="text" name="youtube" class="form-control" id="youtube" placeholder="https://youtube.com/channel/xyz" value="{{ data.syoutube }}" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="linkedin" class="form-label text-uppercase">Linkedin URL</label>
+                            <input type="text" name="linkedin" class="form-control" id="linkedin" placeholder="https://linkedin.com/xyz" value="{{ data.slinkedin }}" />
+                        </div>
+
+                        
+
+
+
+                        <div class="mb-3">
+                            <label for="headerscripts" class="form-label text-uppercase">Header Scripts</label>
+
+                            <textarea name="headerscripts" class="form-control" id="headerscripts" placeholder="Scripts to load in header" >{{ data.sscripts }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="footerscripts" class="form-label text-uppercase">Footer Scripts</label>
+
+                            <textarea name="footerscripts" class="form-control" id="footerscripts" placeholder="Scripts to load in footer" >{{ data.sscripts_footer }}</textarea>
+                        </div>
+
+                        
+                        
+                        <div class="mt-3 text-end">
+                            <input type="submit" name="fsubmit" class="btn red-btn" value="Update Settings">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% embed "Admin/admin-footer.twig" %}{% endembed %}
+    {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
+        integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('#form').parsley();
+        // Restricts input for the given textbox to the given inputFilter.
+        function setInputFilter(textbox, inputFilter) {
+            ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+                textbox.addEventListener(event, function () {
+                    if (inputFilter(this.value)) {
+                        this.oldValue = this.value;
+                        this.oldSelectionStart = this.selectionStart;
+                        this.oldSelectionEnd = this.selectionEnd;
+                    } else if (this.hasOwnProperty("oldValue")) {
+                        this.value = this.oldValue;
+                        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                    } else {
+                        this.value = "";
+                    }
+                });
+            });
+        }
+
+        setInputFilter(document.getElementById("callphone"), function (value) {
+            return /^\d*$/.test(value);
+        });
+        setInputFilter(document.getElementById("waphone"), function (value) {
+            return /^\d*$/.test(value);
+        });
+    </script>
+    {% endblock %}
+{% endblock %}

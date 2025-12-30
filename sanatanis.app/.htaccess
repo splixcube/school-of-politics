@@ -1,0 +1,69 @@
+RewriteEngine on
+Options -Indexes
+# RewriteCond %{HTTP_HOST} ^searchforcareer.com [NC]
+# RewriteRule ^(.*)$ https://www.searchforcareer.com/$1 [L,R=301]
+
+RewriteRule ^robots.txt - [L]
+RewriteRule ^sitemap.xml - [L]
+RewriteRule ^Final_Poornima_Group_Full_Logo.jpg - [L]
+RewriteRule ^Final_Poornima_Group_FullLogo.jpg - [L]
+RewriteRule ^Final_Poornima_Group_Only_Logo.jpg - [L]
+RewriteRule ^orientation.pdf - [L]
+RewriteCond %{REQUEST_URI} "/blog" [OR]
+RewriteCond %{REQUEST_URI} "/360-Campus-Tour"
+RewriteCond %{REQUEST_URI} "/aayam"
+RewriteRule (.*) $1 [L]
+
+RewriteRule    ^$    public/    [L]
+RewriteRule    (.*) public/$1    [L]
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Video
+    ExpiresByType video/webm "access plus 1 year"
+    ExpiresByType video/mp4 "access plus 1 year"
+    ExpiresByType video/mpeg "access plus 1 year"
+
+    # Fonts
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+
+    # CSS, JavaScript
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+
+    # Others
+    ExpiresByType application/pdf "access plus 1 year"
+    ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+</IfModule>
+
+# BROWSER CACHING USING CACHE-CONTROL HEADERS
+<IfModule mod_headers.c>
+    # One year for image and video files
+    <filesMatch ".(flv|gif|ico|jpg|jpeg|mp4|mpeg|png|svg|swf|webp)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </filesMatch>
+
+    # One month for JavaScript and PDF files
+    <filesMatch ".(js|pdf)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </filesMatch>
+
+    # One week for CSS files
+    <filesMatch ".(css)$">
+        Header set Cache-Control "max-age=604800, public"
+    </filesMatch>
+</IfModule>

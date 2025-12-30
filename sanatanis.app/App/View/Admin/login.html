@@ -1,0 +1,74 @@
+{% block title %}Login{% endblock %}
+{% extends 'Admin/admin-base.html' %}
+{% block body %}
+<div class="container">
+    <div class="row align-items-center flex-column justify-content-center min-vh-100">
+        <div class="col-12 col-md-4">
+            <img src="{{env.rootfolder}}img/logo.svg" class="img-fluid px-3 pb-4" />
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="card shadow-purple border-0 rounded-0">
+                <div class="card-body">
+                    {% if err is not empty %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <ul class="mb-0">
+                            {% for er in err %}
+                            <li>{{ er }}</li>
+                            {% endfor %}
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+
+                    <form method="POST" id="form">
+                        <div class="mb-3 formgroup">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" name="aname" class="form-control" id="username" required />
+                        </div>
+                        <div class="mb-3 formgroup">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="apassword" class="form-control" id="password" required />
+                        </div>
+                        <input type="submit" name="submit" class="btn btn-purple float-end" value="Submit" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% embed "main-footer.twig" %}
+{% block scripts %}
+<script src="js/pristine.min.js"></script>
+<script>
+    let defaultConfig = {
+        // class of the parent element where the error/success class is added
+        classTo: 'formgroup',
+        errorClass: 'was-validated',
+        // class of the parent element where error text element is appended
+        errorTextParent: 'formgroup',
+        // type of element to create for the error text
+        errorTextTag: 'div',
+        // class of the error text element
+        errorTextClass: 'invalid-feedback'
+    };
+    window.onload = function () {
+
+        var form = document.getElementById("form");
+        // create the pristine instance
+        var pristine = new Pristine(form, defaultConfig);
+        form.addEventListener('submit', function (e) {
+
+            // check if the form is valid
+            if (pristine.validate()) {
+                return true;
+            } else {
+                e.preventDefault();
+            }
+
+        });
+    };
+</script>
+{% endblock %}
+{% endembed %}
+{% endblock %}

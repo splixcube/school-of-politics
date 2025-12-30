@@ -1,0 +1,5 @@
+leadcom.code-workspace
+logs/
+public/admin-assets/bower_components
+public/admin-assets/plugins/node_modules
+public/admin-assets/plugins/ckeditor5-build-classic

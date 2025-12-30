@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;400;600&display=swap");
+
+body {
+  background: #fcf7fc;
+  font-family: 'Readex Pro', sans-serif
+}
+
+.shadow-purple {
+  box-shadow: 0 0.5rem 1rem #ead6ea !important
+}
+
+.shadow-purple-sm {
+  box-shadow: 0 0.15rem 1rem #ead6ea !important
+}
+
+.form-control,
+.form-select {
+  border-radius: 0;
+  background-position: right 0 center
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: none;
+  border-color: #B00AFF
+}
+
+.form-control.is-invalid:focus,
+.was-validated .form-control:invalid:focus,
+.form-select.is-invalid:focus,
+.was-validated .form-select:invalid:focus {
+  box-shadow: none
+}
+
+.btn-purple {
+  background: #FF0961;
+  color: #890031;
+  border-radius: 0
+}
+
+.btn-purple:focus,
+.btn-purple:hover {
+  background: #ef0055;
+  box-shadow: none
+}
+
+i.logout {
+  font-size: 1.2rem;
+  color: black
+}
+
+.stats .card-body {
+  padding: 0.5rem 1rem
+}
+
+.stats .card-header {
+  background-color: #fef7ff;
+  color: #88059a
+}
+
+.stats .card-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FF0961
+}
+
+.dataTable-wrapper,
+.modal {
+  font-weight: 300;
+  color: #27232c
+}
+
+.dataTable-table>tbody>tr>td,
+.dataTable-table>tbody>tr>th,
+.dataTable-table>tfoot>tr>td,
+.dataTable-table>tfoot>tr>th,
+.dataTable-table>thead>tr>td,
+.dataTable-table>thead>tr>th {
+  vertical-align: middle
+}
+
+.dataTable-top,
+.dataTable-bottom {
+  padding: 8px 0px 20px
+}
+
+select:focus-visible,
+input:focus-visible {
+  outline: none
+}
+
+.table-bordered>:not(caption)>* {
+  border-width: 2px
+}
+
+.dataTable-table {
+  border-collapse: collapse
+}
+
+.dataTable-input,
+.dataTable-selector,
+.insidetable {
+  background-color: transparent;
+  padding: 4px 0px;
+  border: 0;
+  border-bottom: 1px solid #8e8e8e
+}
+
+.insidetable {
+  font-weight: 300;
+  color: #27232c;
+  padding: 4px 16px 4px 5px
+}
+
+.insidetable:focus {
+  background: transparent
+}
+
+.btn-dark-purple {
+  color: #fff;
+  background-color: #3d0544;
+  border-color: #3d0544
+}
+
+.btn-dark-purple:hover {
+  color: #fff;
+  background-color: #5f086a;
+  border-color: #3d0544
+}

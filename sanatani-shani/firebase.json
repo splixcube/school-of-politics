@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "target": "shanidoshnivaran",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

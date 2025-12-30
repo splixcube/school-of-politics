@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "target": "vaikkunthaekadashi",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

@@ -1,0 +1,380 @@
+{% extends 'Admin/admin-base.html' %}
+{% block title %}Puja Booking Dashboard{% endblock %}
+{% block css %}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+<link href="https://cdn.datatables.net/2.2.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/3.2.0/css/buttons.bootstrap5.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/searchpanes/2.3.3/css/searchPanes.bootstrap5.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.bootstrap5.min.css" rel="stylesheet">
+
+{% endblock %}
+{% block body %}
+{% embed "Admin/admin-header.twig" %}{% endembed %}
+
+<section class="stats my-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h5 class="text-center mb-2">Booking Statistics</h5>
+            </div>
+            {# Total Bookings #}
+            <a href="{{env.adminfolder}}dashboard" class="text-decoration-none">
+                <div class="col-12 col-md-2">
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="row g-0">
+                            <div class="col-12">
+                                <div class="card-header border-0 rounded-0 text-uppercase">
+                                    Total <small class="ms-auto">(Show)</small>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{{ total }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </a>
+        </div>
+
+        {# Completed Bookings #}
+        <div class="col-12 col-md-2">
+            <a href="{{env.adminfolder}}dashboard?filter=completed" class="text-decoration-none">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-12">
+                            <div class="card-header border-0 rounded-0 text-uppercase">
+                                Completed <small class="ms-auto">(Show)</small>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{ paid }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        {# Pending Bookings #}
+        <div class="col-12 col-md-2">
+            <a href="{{env.adminfolder}}dashboard?filter=pending" class="text-decoration-none">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-12">
+                            <div class="card-header border-0 rounded-0 text-uppercase">
+                                Pending <small class="ms-auto">(Show)</small>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{ unpaid }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        {# Today's Bookings #}
+        <div class="col-12 col-md-2">
+            <div class="card mb-3 border-0 shadow-sm">
+                <div class="row g-0">
+                    <div class="col-12">
+                        <div class="card-header border-0 rounded-0 text-uppercase">
+                            Today's Bookings
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ today }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# Last 7 Days #}
+        <div class="col-12 col-md-2">
+            <div class="card mb-3 border-0 shadow-sm">
+                <div class="row g-0">
+                    <div class="col-12">
+                        <div class="card-header border-0 rounded-0 text-uppercase">
+                            Last 7 Days
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ week }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# Total Revenue #}
+        <div class="col-12 col-md-2">
+            <div class="card mb-3 border-0 shadow-sm">
+                <div class="row g-0">
+                    <div class="col-12">
+                        <div class="card-header border-0 rounded-0 text-uppercase">
+                            Total Revenue
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">₹{{ revenue_stats.total|number_format(2) }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {# Package Statistics #}
+    {% if package_stats is defined and package_stats|length > 0 %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-12">
+            <h5 class="text-center mb-2">Package Statistics</h5>
+        </div>
+        {% for package in package_stats %}
+        <div class="col-12 col-md-3">
+            <div class="card mb-3 border-0 shadow-sm">
+                <div class="card-header border-0 rounded-0 text-uppercase text-center">
+                    {{ package.bpackage }}
+                </div>
+                <div class="card-body text-center">
+                    <h5 class=""> {{ package.count }} | ₹{{ package.total_amount|number_format(2) }}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+</section>
+
+<section class="leadsdata">
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid p-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item me-md-2 align-self-center ">From:</li>
+                        <li class="nav-item me-md-4">
+                            <input type="date" class="form-control from" value="{% if session.from is defined %}{{ session.from }}{% endif %}" />
+                        </li>
+                        <li class="nav-item me-md-2 align-self-center">To:</li>
+                        <li class="nav-item me-md-2">
+                            <input type="date" class="form-control to" value="{% if session.to is defined %}{{ session.to }}{% endif %}" />
+                        </li>
+                        <li class="nav-item me-md-2 align-self-center">
+                            <a href="javascript:void(0)" class="btn btn-dark-purple datefilter">
+                                <i class="bi bi-check-lg"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        {% if get.filter is defined and get.filter is not empty %}
+                        <li class="nav-item me-2">
+                            <a class="btn btn-dark-purple" href="{{ env.adminfolder }}dashboard"><i class="bi bi-arrow-counterclockwise me-2"></i>Show All</a>
+                        </li>
+                        {% endif %}
+
+                        <li class="nav-item">
+                            <a class="btn btn-dark-purple" aria-current="page" href="{{ env.adminfolder }}download/entries" target="_blank"><i class="bi bi-download me-2"></i>Export Excel</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="row p-0">
+            <div class="col-12 p-0">
+                <div class="card border-0 shadow-purple-sm">
+                    <div class="card-body">
+                        {# filter pills #}
+                        {% if session.from is defined %}
+                        <span class="badge rounded-pill bg-light text-dark">{{ session.from }} - {{ session.to }} <a href="javascript:void(0)" class="deldatefilter text-dark" title="Clear Date Filter"><i class="bi bi-x-circle"></i></a></span>
+                        {% endif %}
+                        {# filter pills #}
+
+                        <div class="table-responsive">
+                            <table id="bookings" class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Booking ID</th>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th>Package</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Order ID</th>
+                                        <th>PG Request ID</th>
+                                        <th>PG Payment ID</th>
+                                        <th>Timestamp</th>
+                                        {# <th>Action</th> #}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for booking in data %}
+                                    <tr id="table-row-{{booking.bid}}">
+                                        <td>{{ loop.index }}</td>
+                                        <td>{{ booking.bid|default('-') }}</td>
+                                        <td class="{% if booking.bstatus|lower == 'pending' %}text-warning{% elseif booking.bstatus|lower == 'completed' %}text-success{% elseif booking.bstatus|lower == 'failed' %}text-danger{% else %}text-dark{% endif %}">
+                                            {{ booking.bname|default('-') }}
+                                        </td>
+                                        <td><a href="tel:+91-{{booking.bphone}}" class="text-reset text-decoration-none">{{ booking.bphone|default('-') }}</a></td>
+                                        <td>{{ booking.bemail|default('-') }}</td>
+                                        <td><span class="badge bg-info">{{ booking.bpackage|default('-')|title }}</span></td>
+                                        <td>₹{{ booking.bamount|default('-') }}</td>
+                                        <td>
+                                            <span class="badge {% if booking.bstatus|lower == 'pending' %}bg-warning{% elseif booking.bstatus|lower == 'completed' %}bg-success{% elseif booking.bstatus|lower == 'failed' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                                {{ booking.bstatus|default('-')|title }}
+                                            </span>
+                                        </td>
+                                        <td>{{ booking.border_id|default('-') }}</td>
+                                        <td>{{ booking.bpg_request_id|default('-') }}</td>
+                                        <td>{{ booking.bpg_payment_id|default('-') }}</td>
+                                        <td>{{ booking.btstamp|default('-') }}</td>
+                                        {# <td>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-sm btn-outline-primary view-details" data-id="{{ booking.bid }}" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                {% if booking.bstatus|lower == 'pending' %}
+                                                <button type="button" class="btn btn-sm btn-success mark-completed" data-id="{{ booking.bid }}">
+                                                    <i class="bi bi-check-circle"></i>
+                                                </button>
+                                                {% endif %}
+                                            </div>
+                                        </td> #}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking Details Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Booking Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="bookingDetails">
+                <!-- Booking details will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% embed "Admin/admin-footer.twig" %}{% endembed %}
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/2.2.1/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.2.1/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.2.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.bootstrap5.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var lastActionColumn = $('#bookings thead th').length - 1;
+
+        $('#bookings').DataTable({
+            responsive: true,
+            order: [1, 'desc'], // Order by Booking ID
+            columnDefs: [
+                {
+                    orderable: false,
+                    targets: [lastActionColumn]
+                },
+                {
+                    targets: 0,
+                    visible: false
+                },
+                { "defaultContent": "-", "targets": "_all" },
+            ],
+        });
+    });
+
+    // Mark booking as completed
+    $("body").on('click', '.mark-completed', function (event) {
+        var bookingId = $(this).data('id');
+        var btn = $(this);
+
+        if (confirm('Are you sure you want to mark this booking as completed?')) {
+            btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>').attr('disabled', true);
+
+            // Add your AJAX call here to update booking status
+            setTimeout(function () {
+                window.location.reload();
+            }, 1000);
+        }
+    });
+
+    // View booking details
+    $("body").on('click', '.view-details', function (event) {
+        var bookingId = $(this).data('id');
+
+        // Add your AJAX call here to fetch booking details
+        $('#bookingDetails').html('<div class="text-center"><div class="spinner-border" role="status"></div></div>');
+
+        // Example static content - replace with actual AJAX call
+        setTimeout(function () {
+            $('#bookingDetails').html('<p>Booking details for ID: ' + bookingId + '</p>');
+        }, 500);
+    });
+
+    // Date Filter
+    $("body").on('click', '.datefilter', function (event) {
+        var from = document.querySelector('.from').value;
+        var to = document.querySelector('.to').value;
+
+        if (from == null || from == "" || to == null || to == "") {
+            Toastify({
+                text: "Dates cannot be empty",
+                duration: 3000,
+                close: true,
+                gravity: "bottom",
+                position: "center",
+                stopOnFocus: true,
+                style: {
+                    background: "#ff0000",
+                },
+            }).showToast();
+        } else {
+            var data = "from=" + from + "&to=" + to;
+            var request = new XMLHttpRequest();
+            request.open('POST', 'ajaxcalls/filter/date', true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            request.send(data);
+            request.onreadystatechange = function () {
+                if (request.readyState === 4 && request.status == 200) {
+                    window.location.reload();
+                }
+            };
+        }
+    });
+
+    // Delete date filter
+    document.addEventListener('click', function (e) {
+        if (e.target.parentElement.classList.contains("deldatefilter")) {
+            var request = new XMLHttpRequest();
+            request.open('POST', 'ajaxcalls/filter/deletedate', true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            request.send();
+            request.onreadystatechange = function () {
+                if (request.readyState === 4 && request.status == 200) {
+                    window.location.reload();
+                }
+            };
+        }
+    });
+</script>
+{% endblock %}

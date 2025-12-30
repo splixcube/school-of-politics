@@ -1,0 +1,499 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+// basic theme settings
+$playfair: 'Playfair Display', serif;
+$poppins: 'Poppins', sans-serif;
+$opensans: 'Open Sans', sans-serif;
+$background   : #e2e2e2;
+$white        : #ffffff;
+$primary-color: #343A40;
+$red          : #ED1C24;
+$blue         : #034EA2;
+$purple       : #2E3192;
+$darkgreeen   : #1BCF17;
+$green        : #C7FDC6;
+$size         : 16px;
+$weight       : 400;
+
+@mixin primary-text($color, $font, $size, $weight) {
+    font-family: $font;
+    font-weight: $weight;
+    font-size  : $size;
+    color      : $color;
+}
+
+body {
+    @include primary-text($primary-color, $poppins, $size, $weight);
+    background: $background;
+
+    @media (max-width:575.98px) {
+        & {
+            font-size: 14px;
+        }
+    }
+}
+
+//----common classes
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin            : 0;
+}
+
+.w-70{
+    width:70%!important;
+}
+
+.form-select {
+    &:focus {
+        outline   : none;
+        box-shadow: none;
+    }
+}
+
+.link-clr {
+    color: $white;
+
+    &:hover {
+        color: $background;
+    }
+}
+
+.link {
+    @include primary-text($primary-color, $poppins, 14px, 600);
+
+    &:hover {
+        color: $blue;
+    }
+}
+
+.hover-red{
+    @include primary-text($primary-color, $poppins, 14px, 400);
+    &:hover{
+        color: $red;
+    }
+}
+    
+
+.btn {
+    &:focus {
+        box-shadow: none;
+        outline   : none;
+    }
+}
+
+.form-control {
+    &:focus {
+        outline   : none;
+        box-shadow: none;
+    }
+}
+
+.card {
+    border: none;
+}
+
+.red-btn {
+    background   : $red;
+    border-radius: 5px;
+    color        : $white;
+
+    &:hover {
+        background: $primary-color;
+        color     : $white;
+    }
+}
+
+.blue-btn {
+    background   : $blue;
+    border-radius: 5px;
+    color        : $white;
+
+    &:hover {
+        background: $primary-color;
+        color     : $white;
+    }
+}
+
+.heading-h2 {
+    @include primary-text($primary-color, $opensans, 36px, bold);
+
+    @media (max-width: 575.98px) {
+        & {
+            font-size: 25px;
+        }
+    }
+}
+
+.heading-h3 {
+    @include primary-text($white, $opensans, 36px, bold);
+
+    @media (max-width: 575.98px) {
+        & {
+            font-size: 25px;
+        }
+    }
+}
+
+.heading-h5 {
+    @include primary-text($primary-color, $poppins, 20px, 600);
+    letter-spacing: 0.03em;
+
+    @media (max-width: 575.98px) {
+        & {
+            font-size: 17px;
+        }
+    }
+}
+
+.heading-h6 {
+    @include primary-text($primary-color, $poppins, 18px, 600);
+    letter-spacing: 0.03em;
+
+    @media (max-width: 575.98px) {
+        & {
+            font-size: 14px;
+        }
+    }
+}
+
+.sub-heading {
+    @include primary-text($white, $opensans, 24px, bold);
+    @media (max-width:575.98px) {
+        & {
+            font-size: 20px;
+        }
+    }
+}
+.right-content {
+    margin-top: 85px;
+}
+.offcanvas-collapse{
+    margin-top: 56px;
+}
+@media (max-width: 991.98px) {
+    .offcanvas-collapse {
+        position        : fixed;
+        margin-top: 0;
+        top             : 56px;
+        /* Height of navbar */
+        bottom          : 0;
+        left            : 100%;
+        width           : 100%;
+        padding-right   : 1rem;
+        padding-left    : 1rem;
+        overflow-y      : auto;
+        visibility      : hidden;
+        background-color: #343a40;
+        transition      : transform .3s ease-in-out, visibility .3s ease-in-out;
+    }
+
+    .offcanvas-collapse.open {
+        visibility: visible;
+        transform : translateX(-100%);
+    }
+}
+
+.nav-scroller {
+    position  : relative;
+    z-index   : 2;
+    // height    : 2.75rem;
+    // overflow-y: hidden;
+    margin-top: 56px;
+    
+}
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow        : inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline         : 1px solid slategrey;
+}
+
+.nav-scroller .nav {
+    display                   : flex;
+    flex-wrap                 : nowrap;
+    margin-top                : -1px;
+    overflow-x                : auto;
+    color                     : rgba(255, 255, 255, .75);
+    text-align                : center;
+    white-space               : nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+    padding-top   : .75rem;
+    padding-bottom: .75rem;
+    font-size     : .875rem;
+    color         : #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+    color: #007bff;
+}
+
+.nav-underline .active {
+    font-weight: 500;
+    color      : #343a40;
+}
+
+.btn-sidebar {
+    display         : inline-flex;
+    align-items     : center;
+    padding         : .25rem .5rem;
+    font-weight     : 600;
+    color           : rgba(0, 0, 0, .65);
+    background-color: transparent;
+    border          : 0;
+}
+
+.btn-sidebar:hover,
+.btn-sidebar:focus {
+    color           : rgba(0, 0, 0, .85);
+    background-color: lighten($color: $blue, $amount: 50);
+}
+
+
+.btn-toggle {
+    display         : inline-flex;
+    align-items     : center;
+    padding         : .25rem .5rem;
+    font-weight     : 600;
+    color           : rgba(0, 0, 0, .65);
+    background-color: transparent;
+    border          : 0;
+}
+
+.btn-toggle:hover,
+.btn-toggle:focus,
+.btn-toggle[aria-expanded="true"] {
+    color           : rgba(0, 0, 0, .85);
+    background-color: lighten($color: $blue, $amount: 50);
+}
+
+.btn-toggle::after {
+    width           : 1.25em;
+    line-height     : 0;
+    content         : url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcz0iYmkgYmktY2hldnJvbi1yaWdodCIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00LjY0NiAxLjY0NmEuNS41IDAgMCAxIC43MDggMGw2IDZhLjUuNSAwIDAgMSAwIC43MDhsLTYgNmEuNS41IDAgMCAxLS43MDgtLjcwOEwxMC4yOTMgOCA0LjY0NiAyLjM1NGEuNS41IDAgMCAxIDAtLjcwOHoiLz4KPC9zdmc+');
+    transition      : transform .35s ease;
+    text-align: right;
+    position: absolute;
+    right   : 10px;
+}
+
+
+
+.btn-toggle[aria-expanded="true"]::after {
+    transform: rotate(90deg);
+}
+
+.btn-toggle-nav li.active {
+    background: #c2cbd3;
+}
+.btn-toggle-nav li a {
+    display        : inline-flex;
+    padding        : .1875rem .5rem;
+    margin-top     : .25rem;
+    margin-left    : 1.1rem;
+    text-decoration: none;
+}
+
+.btn-toggle-nav li:hover,
+.btn-toggle-nav li:focus {
+    background-color: lighten($color: $blue, $amount: 50);
+}
+
+.scrollarea {
+    overflow-y: auto;
+}
+
+.collapse.show, .collapsing{
+    margin-top: 10px;
+    background-color: #e2e2e2;
+    border-radius: 5px;
+}
+// basic theme settings
+
+
+// card design
+.card {
+    border    : none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    &-header {
+        position        : relative;
+        padding         : 1.5rem;
+        border-bottom   : none;
+        background-color: #fff;
+        box-shadow      : 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08);
+        z-index         : 2;
+        &:first-child {
+            border-radius: calc(1rem - 1px) calc(1rem - 1px) 0 0;
+        }
+    }
+    
+    &-heading {
+        margin-bottom : 0;
+        font-size     : .9rem;
+        font-weight   : 400;
+        text-transform: uppercase;
+        letter-spacing: .2em;
+    }
+    // form in card settings
+    .form-label{
+        letter-spacing: 0.2rem;
+        font-size: 0.9rem;
+    }
+    // form in card settings
+}
+
+// parsley css
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+    color           : #B94A48;
+    background-color: #F2DEDE;
+    border          : 1px solid #EED3D7;
+}
+
+.parsley-errors-list {
+    margin         : 8px 0 0px;
+    padding        : 0;
+    list-style-type: none;
+    font-size      : 0.9em;
+    line-height    : 0.9em;
+    opacity        : 0;
+    color          : #B94A48;
+
+    transition        : all .3s ease-in;
+    -o-transition     : all .3s ease-in;
+    -moz-transition   : all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+    opacity: 1;
+}
+// parsley css
+
+
+// page CSS
+.pagetyperadio:checked ~ label::before {
+    content      : "";
+    border       : 2px solid #034EA2;
+    border-radius: 5px;
+    width        : 100%;
+    height       : 100%;
+    position     : absolute;
+    left         : 0;
+    top          : 0;
+}
+
+.ql-container{
+    height: calc(100% - 42px) !important; /* 100% - height of 'ql-toolbar' */
+    max-height: 500px;
+    margin-bottom: 60px;
+}
+
+// datatable margin correction
+.dataTables_length{
+    margin-bottom: 15px !important;
+}
+// page CSS
+
+// menu css
+.menu_list {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 15px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+
+#myUL {
+    list-style-type: none;
+    padding: 20px 40px;
+    margin: 0;
+}
+
+#myUL2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+}
+
+#myUL li {
+    padding: 5px;
+}
+
+#myUL li:hover {
+    background: #f1f1f1;
+}
+
+
+#myUL .custom-control-label {
+    display: inline-block;
+    width: 100%;
+}
+
+#pageloader {
+  background: rgba(255, 255, 255, 0.97);
+  display: block;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+    & .loaderimg {
+        left: 45%;
+        margin-left: -32px;
+        margin-top: -32px;
+        position: absolute;
+        top: 30%;
+    }
+    & img {
+        left: 50%;
+        margin-left: -32px;
+        margin-top: -32px;
+        position: absolute;
+        top: 50%;
+    }
+}
+
+
+
+
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+.filter_search_box,
+#myInput,
+#myInput2 {
+    width: 100%;
+    font-size: 16px;
+    padding: 6px 20px 6px 45px;
+    border: 1px solid #ddd;
+    margin-bottom: 30px;
+    background-image: url(../img/search.png);
+    background-size: contain;
+    /* background-position: 10px 10px; */
+    background-repeat: no-repeat;
+    border-radius: 5px;
+}
+// menu css
