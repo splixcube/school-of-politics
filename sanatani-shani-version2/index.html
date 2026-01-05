@@ -251,7 +251,7 @@
 		<div class="line-break"></div>
 		<div class="row mt-3">
 			<div class=" col-md-4 col-12 mb-3 ">
-				<div class="booking-plan-card-wrapper">
+				<div class="booking-plan-card-wrapper" data-plan-name="श्रद्धा पूजा" data-plan-price="99">
 				<div class="booking-plan-card select-plan-card">
 					<div class="booking-plan-header ">
 						<img src="./img/icons/plan1.svg" class="plan-img">
@@ -262,7 +262,7 @@
 					</div>
 					
 					<div class="booking-plan-body">
-						<button class="btn btn-select" >चुनें</button>
+						<button class="btn btn-select plan-book-btn" >चुनें</button>
 					</div>
 				</div>
 				<section class="plan-section" style="display: none;">
@@ -291,7 +291,7 @@
 				</div>
 
 				<div class=" col-md-4 col-12 mb-3 ">
-				<div class="booking-plan-card-wrapper">
+				<div class="booking-plan-card-wrapper" data-plan-name="संकल्प पूजा" data-plan-price="199">
 				<div class="booking-plan-card select-plan-card">
 					<div class="booking-plan-header ">
 						<img src="./img/icons/plan2.svg"  class="plan-img">
@@ -302,7 +302,7 @@
 					</div>
 					
 					<div class="booking-plan-body">
-						<button class="btn btn-select" >चुनें</button>
+						<button class="btn btn-select plan-book-btn" >चुनें</button>
 					</div>
 				</div>
 				<section class="plan-section" style="display: none;">
@@ -331,7 +331,7 @@
 			</div>
 
 				<div class=" col-md-4 col-12 mb-3 ">
-				<div class="booking-plan-card-wrapper" style="border: 2px solid #F54900 !important;">
+				<div class="booking-plan-card-wrapper" style="border: 2px solid #F54900 !important;" data-plan-name="पूर्ण संकल्प पूजा" data-plan-price="499">
 				<div class="booking-plan-card select-plan-card">
 					<div class="booking-tag">
 						अनुशंसित
@@ -348,7 +348,7 @@
 					</div>
 					
 					<div class="booking-plan-body">
-						<button class="btn btn-select" >बुक करें</button>
+						<button class="btn btn-select plan-book-btn" >बुक करें</button>
 					</div>
 				</div>
 				<section class="plan-section" style="display: none;">
@@ -510,6 +510,7 @@
 
 <form id="bookNowForm">
 		<input type="hidden" name="package-type" id="package-type">
+		<input type="hidden" name="package-price" id="package-price">
 		<input type="hidden" name="success_redirect_url" id="success-redirect-url">
 					</form>
 
@@ -609,6 +610,30 @@
 		$(".select-plan-card, .btn-select").click(function (e) {
 			e.preventDefault();
 			e.stopPropagation();
+			
+			// Check if this is a book button - if so, submit the form
+			if ($(this).hasClass("plan-book-btn")) {
+				const wrapper = $(this).closest(".booking-plan-card-wrapper");
+				const planName = wrapper.data("plan-name");
+				const planPrice = wrapper.data("plan-price");
+				
+				// Set package type and price
+				$("#package-type").val(planName);
+				$("#package-price").val(planPrice);
+				
+				// Set success redirect URL
+				const baseUrl = window.location.origin;
+				const currentPath = window.location.pathname;
+				const directoryPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+				const successRedirectUrl = baseUrl + (directoryPath ? directoryPath : '') + '/payment-success.html';
+				$("#success-redirect-url").val(successRedirectUrl);
+				
+				console.log("Booking plan:", planName, "Price:", planPrice);
+				
+				// Submit the form
+				$("#bookNowForm").submit();
+				return;
+			}
 			
 			// Get the wrapper and plan section for the clicked element
 			const wrapper = $(this).closest(".booking-plan-card-wrapper");
@@ -720,6 +745,8 @@
 			// Close the modal after submission
 			$("#bookNowModal").modal("hide");
 		});
+
+		
 	});
 
 
