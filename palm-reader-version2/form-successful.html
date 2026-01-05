@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success - Hast Rekha</title>
+    <link rel="icon" href="./images/logo.svg" type="image/x-icon">
+    <!-- link to css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- link to bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- link to jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- link to bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- link to popper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Meta Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '859889666534410');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=859889666534410&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+    <div class="wrapper-form">
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-12 col-md-6 col-lg-5">
+                    <div class="success-card text-center">
+                        <!-- Success Icon -->
+                        <div class="success-icon-wrapper">
+                            <div class="success-icon-circle">
+                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <!-- Success Message -->
+                        <h1 class="success-title">Success!</h1>
+                        <p class="success-message">
+                            Your palm reading has been submitted successfully. Our expert astrologist will analyze your palm and provide you with detailed insights.
+                        </p>
+                        
+                        <!-- Action Buttons -->
+                        <div class="success-actions mt-4">
+                           <!--  <a href="palm-listing.html" class="btn btn-primary-custom me-2 mb-2">
+                                <i class="bi bi-list-ul me-2"></i>View All Readings
+                            </a> -->
+                            <a href="index.html" class="btn btn-primary-custom mb-2">
+                                <i class="bi bi-house me-2"></i>Back to Home
+                            </a>
+                        </div>
+                        
+                        <!-- Additional Info -->
+                     <!--    <div class="success-info mt-4">
+                            <p class="text-white fs-14 mb-0">
+                                <i class="bi bi-shield-check me-2"></i>
+                                Your data is secure and confidential
+                            </p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    /*     .success-card {
+            background-color: var(--quaternary-color);
+            border-radius: 20px;
+            padding: 50px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        } */
+
+        .success-icon-wrapper {
+            margin-bottom: 30px;
+        }
+
+        .success-icon-circle {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #FFDF20 0%, #FDC700 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .checkmark {
+            width: 60px;
+            height: 60px;
+        }
+
+        .checkmark-circle {
+            stroke: #000;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark-check {
+            stroke: #000;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .success-title {
+            color: var(--secondary-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #C27AFF 0%, #FB64B6 50%, #FF8904 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .success-message {
+            color: var(--secondary-color);
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        .success-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-outline-custom {
+            background-color: transparent !important;
+            border: 2px solid var(--primary-color) !important;
+            color: var(--primary-color) !important;
+            padding: 10px 20px !important;
+            border-radius: 12px !important;
+            font-size: 16px !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: var(--primary-color) !important;
+            color: var(--quinary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .success-info {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .success-info i {
+            color: var(--primary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .success-card {
+                padding: 40px 20px;
+            }
+
+            .success-title {
+                font-size: 2rem;
+            }
+
+            .success-icon-circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .checkmark {
+                width: 50px;
+                height: 50px;
+            }
+
+            .success-actions {
+                flex-direction: column;
+            }
+
+            .success-actions .btn {
+                width: 100%;
+                margin: 5px 0 !important;
+            }
+        }
+    </style>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD4IQwokYy02_2SQxah0HC9fIHRPxoxoEg",
+            authDomain: "palm-reader-7f6b4.firebaseapp.com",
+            projectId: "palm-reader-7f6b4",
+            storageBucket: "palm-reader-7f6b4.firebasestorage.app",
+            messagingSenderId: "277530875490",
+            appId: "1:277530875490:web:88b810a4ef964434f2a33b"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Get URL query parameters
+        function getUrlQueryParams() {
+            const params = {};
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            for (const [key, value] of urlParams.entries()) {
+                params[key] = value;
+            }
+            
+            return params;
+        }
+
+        // Update Firebase document with payment details
+        async function updateFirebaseDocument(docId, orderId, paymentId) {
+            try {
+                const updateData = {
+                    orderId: orderId,
+                    paymentId: paymentId
+                };
+
+                await db.collection('palmReadings').doc(docId).update(updateData);
+                console.log('Document updated successfully with payment details');
+                return true;
+            } catch (error) {
+                console.error('Error updating Firebase document:', error);
+                throw error;
+            }
+        }
+
+        // Main function to handle payment success
+        $(document).ready(function() {
+            const queryParams = getUrlQueryParams();
+            console.log('Query parameters:', queryParams);
+
+            const documentId = queryParams.id;
+            const orderId = queryParams.orderid || queryParams.orderId;
+            const paymentId = queryParams.payment_id;
+            console.log('Document ID:', documentId);
+                console.log('Order ID:', orderId);
+                console.log('Payment ID:', paymentId);
+
+            // If we have the document ID and payment details, update Firebase
+            if (documentId && orderId && paymentId) {
+                console.log('Updating Firebase document with payment details...');
+                console.log('Document ID:', documentId);
+                console.log('Order ID:', orderId);
+                console.log('Payment ID:', paymentId);
+
+                updateFirebaseDocument(documentId, orderId, paymentId)
+                    .then(() => {
+                        console.log('Payment details saved successfully');
+                    })
+                    .catch((error) => {
+                        console.error('Failed to save payment details:', error);
+                        // Show error but don't block the success page
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Payment Recorded',
+                            text: 'Your payment was successful, but there was an issue saving payment details. Please contact support if needed.',
+                            confirmButtonColor: '#FDD513',
+                            confirmButtonText: 'OK',
+                            timer: 5000,
+                            timerProgressBar: true
+                        });
+                    });
+            } else {
+                console.log('Missing query parameters. Document ID:', documentId, 'Order ID:', orderId, 'Payment ID:', paymentId);
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --primary-color: #FDD513;
+    --secondary-color: #fff;
+    --tertiary-color: #0C0D08;
+    --quaternary-color: #2E2E2C;  
+    --quinary-color: #000;
+    --senary-color: #fff;
+    --septenary-color: #000;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.fs-12{
+    font-size: 12px !important;
+}
+.fs-14{
+    font-size: 14px !important;
+}
+.fs-16{
+    font-size: 16px !important;
+}
+.fs-18{
+    font-size: 18px !important;
+}
+.btn-primary-custom{
+ /*  //  background-color: var(--primary-color) !important; */
+    background: linear-gradient(180deg, #FFDF20 0%, #FDC700 100%) !important;
+    color: var(--quinary-color) !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    border-radius: 12px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    cursor: pointer;
+    transition: all 0.3s ease;/* 
+    &:hover{
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+    } */
+}
+.wrapper{
+    background-image: url('./images/background.svg');
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    .text-gradient{
+        background: linear-gradient(90deg, #C27AFF 0%, #FB64B6 50%, #FF8904 100%),
+linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+    }
+   /*  .footer-div{
+        position: absolute;
+        bottom: 70px;
+        width: 100%;
+        right: 0px;
+        left: 0px;
+        padding: 10px;
+    } */
+    
+    /* Desktop layout adjustments */
+    @media (min-width: 768px) {
+        .wrapper .row.align-items-center {
+            min-height: calc(100vh - 100px);
+        }
+        
+        .wrapper .text-gradient {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+    }
+}
+
+.wrapper-form{
+
+    background-image: url('./images/background.svg');
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    .text-gradient{
+        background: linear-gradient(90deg, #C27AFF 0%, #FB64B6 50%, #FF8904 100%),
+linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+    }
+    .form-group{
+        margin-bottom: 15px;
+        .form-label{
+            font-size: 16px !important;
+            font-weight: 500 !important;
+            color: var(--secondary-color);
+        }
+        .form-control{
+            background-color: #b7b7b730 !important;
+            border: none !important;
+            border-radius: 12px !important;
+            color: var(--secondary-color) !important;
+            padding: 10px 20px !important;
+        }
+        
+        /* Hide number input spinners */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+        
+        input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+        
+        /* Error message styling */
+        .error-message {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-control.is-invalid {
+            border: 1px solid #ff6b6b !important;
+        }
+    }
+}
+
+.wrapper-listing{
+    background-image: url('./images/background.svg');
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    .text-gradient{
+        background: linear-gradient(90deg, #C27AFF 0%, #FB64B6 50%, #FF8904 100%),
+linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+    }
+    .table-responsive{
+        max-height: 80vh;
+        overflow-y: auto;
+        overflow-x: auto;
+        
+        .table{
+            .table-dark{
+                background-color: var(--quaternary-color) !important;
+            }
+            th{
+                text-wrap: nowrap;
+                white-space: nowrap;
+            }
+        }
+    }
+    
+    /* Custom scrollbar styling for table */
+    .table-responsive::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .table-responsive::-webkit-scrollbar-track {
+        background: var(--quaternary-color);
+        border-radius: 10px;
+    }
+    
+    .table-responsive::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 10px;
+    }
+    
+    .table-responsive::-webkit-scrollbar-thumb:hover {
+        background: #FFDF20;
+    }
+}
+.btn-info{
+    text-wrap: nowrap;
+    white-space: nowrap;
+    background: linear-gradient(180deg, #FFDF20 0%, #FDC700 100%) !important;
+    color: var(--quinary-color) !important;
+    border: none !important;
+    padding: 5px 10px !important;
+    border-radius: 12px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Upload Box Styles */
+.upload-box-container {
+    position: relative;
+}
+
+.upload-box {
+    border: 2px dashed var(--quaternary-color);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    background-color: #b7b7b730;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-box:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(253, 213, 19, 0.1);
+}
+
+.upload-label {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.upload-icon {
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+    opacity: 0.7;
+}
+
+.upload-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.upload-main-text {
+    color: var(--secondary-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.upload-sub-text {
+    color: var(--secondary-color);
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.image-preview {
+    margin-top: 15px;
+    position: relative;
+    display: inline-block;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--quaternary-color);
+}
+
+.preview-img {
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.btn-remove-preview {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.btn-remove-preview:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+/* Submit button loading state */
+#submitBtn {
+    position: relative;
+}
+
+#submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+#submitBtnSpinner {
+    margin-left: 8px;
+    vertical-align: middle;
+}
