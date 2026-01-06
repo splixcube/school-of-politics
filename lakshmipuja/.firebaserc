@@ -1,0 +1,24 @@
+{
+  "projects": {
+    "default": "bhartievents-7ab0d"
+  },
+  "targets": {
+    "bhartievents-7ab0d": {
+      "hosting": {
+        "kidstory-admin": [
+          "kidstory-admin"
+        ],
+        "sanatani": [
+          "sanatani"
+        ],
+        "shanidoshnivaran": [
+          "shanidoshnivaran"
+        ],
+        "shanidev-new": [
+          "shanidev-new"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
