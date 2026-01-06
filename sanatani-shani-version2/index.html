@@ -762,9 +762,9 @@
 				wrapper.addClass("active-plan");
 				button.text("बुक करें");
 				planSection.slideDown(300, function() {
-					// Smooth scroll to the plan section after it's shown
+					// Smooth scroll to the wrapper (card header with button) so it's visible
 					$('html, body').animate({
-						scrollTop: planSection.offset().top - 20
+						scrollTop: wrapper.offset().top - 100
 					}, 500);
 				});
 			}
