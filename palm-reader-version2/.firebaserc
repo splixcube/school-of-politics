@@ -9,6 +9,13 @@
           "palm-reader-v2"
         ]
       }
+    },
+    "bhartievents-7ab0d": {
+      "hosting": {
+        "palmistry-v2": [
+          "palmistry-v2"
+        ]
+      }
     }
   },
   "etags": {}

@@ -77,6 +77,7 @@ class Main extends \Core\MainController
 				'monthly' => 599,
 				'Gaay Ko Roti' => 99,
 				'Shani Dosha Nivaran Pooja' => 199,
+				'Shani Dosha Nivaran Poorna Sankalp' => 499,
 				'Vaikuntha Ekadashi Puja Single' => 99,
 				'Vaikuntha Ekadashi Puja Family' => 299,
 				'Hast Rekha' => 299
@@ -107,6 +108,12 @@ class Main extends \Core\MainController
 
 					// Determine redirect URL - use success_redirect_url if provided, otherwise use default
 					$redirectUrl = $_ENV['appurl'] . "/payment?order=" . $orderId;
+					
+					// Append id parameter if present
+					if (!empty($inputData['id'])) {
+						$redirectUrl .= "&id=" . urlencode($inputData['id']);
+					}
+					
 					if (!empty($inputData["success_redirect_url"])) {
 						// Validate and sanitize the redirect URL
 						$customRedirectUrl = filter_var($inputData["success_redirect_url"], FILTER_SANITIZE_URL);
@@ -114,6 +121,10 @@ class Main extends \Core\MainController
 							// Append order ID as query parameter if not already present
 							$separator = (strpos($customRedirectUrl, '?') !== false) ? '&' : '?';
 							$redirectUrl = $customRedirectUrl . $separator . "order=" . $orderId;
+							// Append id parameter if present
+							if (!empty($inputData['id'])) {
+								$redirectUrl .= "&id=" . urlencode($inputData['id']);
+							}
 						}
 					}
 

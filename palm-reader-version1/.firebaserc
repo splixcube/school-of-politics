@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "palm-reader-7f6b4"
-  }
+  },
+  "targets": {
+    "bhartievents-7ab0d": {
+      "hosting": {
+        "palmreader": [
+          "palmreader"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
