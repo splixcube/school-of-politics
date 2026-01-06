@@ -77,6 +77,7 @@ class Main extends \Core\MainController
 				'monthly' => 599,
 				'Gaay Ko Roti' => 99,
 				'Shani Dosha Nivaran Pooja' => 199,
+				'Shani Dosha Nivaran Poorna Sankalp' => 499,
 				'Vaikuntha Ekadashi Puja Single' => 99,
 				'Vaikuntha Ekadashi Puja Family' => 299,
 				'Hast Rekha' => 299
