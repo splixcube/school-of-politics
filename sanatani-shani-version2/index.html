@@ -363,7 +363,7 @@
 					</div>
 					
 					<div class="booking-plan-body">
-						<button class="btn btn-select plan-book-btn" >बुक करें</button>
+						<button class="btn btn-select plan-book-btn" >चुनें</button>
 					</div>
 				</div>
 				<section class="plan-section" style="display: none;">
@@ -722,9 +722,14 @@
 			e.preventDefault();
 			e.stopPropagation();
 			
-			// Check if this is a book button - if so, submit the form
-			if ($(this).hasClass("plan-book-btn")) {
-				const wrapper = $(this).closest(".booking-plan-card-wrapper");
+			// Get the wrapper and plan section for the clicked element
+			const wrapper = $(this).closest(".booking-plan-card-wrapper");
+			const planSection = wrapper.find(".plan-section");
+			const button = wrapper.find(".btn-select");
+			const isCurrentlyActive = wrapper.hasClass("active-plan");
+			
+			// If currently active and button says "बुक करें", open payment gateway
+			if (isCurrentlyActive && button.text().trim() === "बुक करें") {
 				const planName = wrapper.data("plan-name");
 				const planPrice = wrapper.data("plan-price");
 				
@@ -746,18 +751,16 @@
 				return;
 			}
 			
-			// Get the wrapper and plan section for the clicked element
-			const wrapper = $(this).closest(".booking-plan-card-wrapper");
-			const planSection = wrapper.find(".plan-section");
-			const isCurrentlyActive = wrapper.hasClass("active-plan");
-			
 			// Remove active-plan class from all wrappers and hide all plan sections
+			// Reset all buttons to "चुनें"
 			$(".booking-plan-card-wrapper").removeClass("active-plan");
 			$(".plan-section").slideUp(300);
+			$(".btn-select").text("चुनें");
 			
 			// If this card wasn't active, activate it and show its plan section
 			if (!isCurrentlyActive) {
 				wrapper.addClass("active-plan");
+				button.text("बुक करें");
 				planSection.slideDown(300, function() {
 					// Smooth scroll to the plan section after it's shown
 					$('html, body').animate({
@@ -768,23 +771,35 @@
 		});
 
 		$(".packageBtn").click(function (e) {
-			// e.preventDefault();
-			console.log("Button clicked:", $(this).val());
-
-			const packageType = $(this).val();
-			$("#package-type").val(packageType);
+			e.preventDefault();
+			
+			// Check if a plan is currently selected/active
+			const activePlan = $(".booking-plan-card-wrapper.active-plan");
+			
+			if (activePlan.length > 0) {
+				// Use the selected plan's details
+				const planName = activePlan.data("plan-name");
+				const planPrice = activePlan.data("plan-price");
+				
+				$("#package-type").val(planName);
+				$("#package-price").val(planPrice);
+				
+				console.log("Booking selected plan:", planName, "Price:", planPrice);
+			} else {
+				// Use default value if no plan is selected
+				const packageType = $(this).val();
+				$("#package-type").val(packageType);
+				console.log("Button clicked:", packageType);
+			}
 			
 			// Set success redirect URL
 			const baseUrl = window.location.origin;
 			const currentPath = window.location.pathname;
-			// Get directory path (remove filename from path)
 			const directoryPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
 			const successRedirectUrl = baseUrl + (directoryPath ? directoryPath : '') + '/payment-success.html';
 			$("#success-redirect-url").val(successRedirectUrl);
 			
 			console.log("Success redirect URL:", successRedirectUrl);
-			
-			// $("#bookNowModal").modal("show");
 
 			$("#bookNowForm").submit();
 		});
