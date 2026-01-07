@@ -80,7 +80,19 @@ class Main extends \Core\MainController
 				'Shani Dosha Nivaran Poorna Sankalp' => 499,
 				'Vaikuntha Ekadashi Puja Single' => 99,
 				'Vaikuntha Ekadashi Puja Family' => 299,
-				'Hast Rekha' => 299
+				'Hast Rekha' => 299,
+				'Shiv Ji Pooja' => 99,
+				'Shiv Ji Sankalp Pooja' => 199,
+				'Shiv Ji Poorna Sankalp Pooja' => 499,
+				'Rahu Negativity Nivaran Pooja' => 99,
+				'Rahu Sankalp Pooja' => 199,
+				'Rahu Poorna Sankalp Pooja' => 499,
+				'Mahalakshmi Pooja' => 99,
+				'Mahalakshmi Sankalp Pooja' => 199,
+				'Mahalakshmi Poorna Sankalp Pooja' => 499,
+				'Makar Sankranti Pooja' => 99,
+				'Makar Sankranti Sankalp Pooja' => 199,
+				'Makar Sankranti Poorna Sankalp Pooja' => 499
 			];
 
 

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>
+      Payment Success - Sanatanis App
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.min.css" />
+    <link rel="shortcut icon" href="img/logo.webp" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- Facebook Pixel Code -->
+    <!-- Meta Pixel Code -->
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2415543175531052');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2415543175531052&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+    
+    <style>
+      .success-section {
+        margin-top: 0px;
+        padding: 40px 0;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+      }
+      .success-card { 
+        border-radius: 16px;
+        background: linear-gradient(135deg, #FFFBEB 0%, #FEFCE8 100%);
+border: 0.67px solid #FEE685;
+        padding: 40px;
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .success-icon {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(90deg, #F54900 0%, #E7000B 100%);
+      border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+        animation: scaleIn 0.5s ease-out;
+      }
+      .success-icon i {
+        font-size: 50px;
+        color: #fff;
+      }
+      @keyframes scaleIn {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      .success-title {
+        font-family: "Arimo", sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        color: #E7000B;
+        margin-bottom: 20px;
+      }
+      .success-message {
+        font-family: "Arimo", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        color: #707070;
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+      .order-id-box {
+        background: #F9F8FD;
+        border: 2px dashed #E5E7EB;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 30px 0;
+      }
+      .order-id-label {
+        font-family: "Arimo", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #707070;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .order-id-value {
+        font-family: "Arimo", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        word-break: break-all;
+      }
+      .info-box {
+        background: #FEF5EC;
+        border-left: 4px solid #F18912;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 30px 0;
+        text-align: left;
+      }
+      .info-box p {
+        font-family: "Arimo", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: #707070;
+        margin-bottom: 10px;
+      }
+      .info-box p:last-child {
+        margin-bottom: 0;
+      }
+      .info-box strong {
+        color: #F18912;
+        font-weight: 600;
+      }
+      .btn-back{
+        background: linear-gradient(90deg, #F54900 0%, #E7000B 100%);
+        color: white;
+        border-radius: 12px;
+        padding: 10px 20px;
+        font-size: 18px;
+        font-family: "Arimo", sans-serif;
+      }
+      @media (max-width: 575.98px) {
+        .success-section {
+         /*  margin-top: 80px; */
+          padding: 30px 0;
+        }
+        .success-card {
+          padding: 30px 20px;
+        }
+        .success-icon {
+          width: 80px;
+          height: 80px;
+        }
+        .success-icon i {
+          font-size: 40px;
+        }
+        .success-title {
+          font-size: 24px;
+        }
+        .success-message {
+          font-size: 16px;
+        }
+        .order-id-value {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+ <!--    <nav class="navbar navbar-expand-lg py-2 fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="img/logo.webp" class="img-fluid col-6" alt="">
+        </a>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-bottom h-50" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+              <img src="img/logo.webp" class="img-fluid col-6" alt="">
+            </h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-center flex-grow-1 gap-4 nav-underline">
+              <li class="nav-item">
+                <a class="nav-link nav-custom" href="index.html#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-custom" href="index.html#package">Packages</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-custom" href="index.html#benefits">Benefits</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-custom" href="index.html#process">Process</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-custom" href="index.html#testimonial">Reviews</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-custom" href="index.html#faq">FAQs</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav> -->
+
+    <section class="success-section">
+      <div class="container">
+        <div class="success-card">
+          <div class="success-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <h2 class="success-title">Payment Successful!</h2>
+          <p class="success-message">
+            धन्यवाद! आपका भुगतान सफलतापूर्वक प्राप्त हो गया है। आपकी पूजा बुक हो गई है और हम जल्द ही आपसे संपर्क करेंगे।
+          </p>
+          <p class="success-message" style="font-size: 16px; color: #4B5563;">
+            Thank you! Your payment has been received successfully. Your puja has been booked and we will contact you soon.
+          </p>
+          
+          <div class="order-id-box">
+            <div class="order-id-label">Order ID</div>
+            <div class="order-id-value" id="orderId">-</div>
+          </div>
+
+          <div class="info-box">
+            <p style="font-size: 18px; "> <strong>क्या होगा अब?</strong></p>
+            <p>• आपको WhatsApp पर पूजा अपडेट मिलेंगे</p>
+            <p>• पूजा पूरी होने के बाद आपको वीडियो भेजा जाएगा</p>
+          </div>
+
+          <div class="d-flex justify-content-center mt-4">
+            <a href="index.html" class="btn btn-back">
+              <i class="fas fa-home me-2"></i>Back to Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <footer class="pb-5 pb-md-0 pt-5 mt-md-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <img src="img/logo.webp" class="img-fluid mb-3" alt="">
+            <p class="text-white"> Sanatanis App has brought religious services to the masses in India by connecting devotees, pundits, and temples. Partnering with over 50 renowned temples, we provide exclusive pujas and offerings services performed by expert pandits and share videos of the completed puja rituals. </p>
+          </div>
+          <div class="col-12 col-md-3 offset-md-1 mt-4">
+            <h3 class="text-white mb-3"> Links </h3>
+            <div class="d-flex flex-column flex-md-row">
+              <nav class="nav flex-column">
+                <a class="nav-link ps-0" href="index.html#about-puja">About Puja</a>
+                <a class="nav-link ps-0" href="index.html#benefits">Benefits</a>
+                <a class="nav-link ps-0" href="index.html#process">Process</a>
+                <a class="nav-link ps-0" href="index.html#details">Temple Details</a>
+              </nav>
+              <nav class="nav flex-column">
+                <a class="nav-link ps-0 ps-md-3" href="index.html#package">Packages</a>
+                <a class="nav-link ps-0 ps-md-3" href="index.html#testimonial">Reviews</a>
+                <a class="nav-link ps-0 ps-md-3" href="index.html#faq">FAQs</a>
+                <a class="nav-link ps-0 ps-md-3" href="https://sanatan-privacy-policy.web.app/" target="_blank">Privacy Policy</a>
+                <a class="nav-link ps-0 ps-md-3" href="https://sanatan-termsandcondition.web.app/" target="_blank">Terms & Conditions</a>
+              </nav>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 ps-md-5 mt-4">
+            <h3 class="text-white mb-3"> Our Address </h3>
+            <p class="text-white"> First Floor, F-118, Adani Galleria, Sector 89A, Gurgaon, Pin - 122505 </p>
+          </div>
+          <div class="col-12 border-top border-white mt-4 pt-4 pb-3">
+            <p class="text-light fs-6 text-center mb-0"> &copy; <span id="year"></span> Sanatan App. All rights reserved. | <a href="https://sanatan-privacy-policy.web.app/" target="_blank" class="text-light text-decoration-none">Privacy Policy</a> | <a href="https://sanatan-termsandcondition.web.app/" target="_blank" class="text-light text-decoration-none">Terms & Conditions</a> </p>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    
+    <script>
+      // Get order ID from URL parameter
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      }
+
+      // Set order ID on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        const orderId = getUrlParameter('order');
+        const orderIdElement = document.getElementById('orderId');
+        
+        if (orderId) {
+          orderIdElement.textContent = orderId;
+        } else {
+          orderIdElement.textContent = 'Not Available';
+          orderIdElement.style.color = '#707070';
+        }
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Track payment success event for analytics
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'Purchase', {
+            content_name: 'Puja Booking',
+            order_id: orderId || 'unknown'
+          });
+        }
+
+        // Call API with payment_id and remove it from URL
+        const paymentId = getUrlParameter('payment_id');
+        if (paymentId) {
+          // Call the API
+          fetch(`https://sanatanis.app/mainajaxcalls/main/getUserDetails?payment_id=${encodeURIComponent(paymentId)}`)
+            .then(response => {
+              // Remove payment_id from URL after API call
+              const url = new URL(window.location);
+              url.searchParams.delete('payment_id');
+              window.history.replaceState({}, '', url);
+            })
+            .catch(error => {
+              console.error('Error calling API:', error);
+              // Still remove payment_id from URL even if API call fails
+              const url = new URL(window.location);
+              url.searchParams.delete('payment_id');
+              window.history.replaceState({}, '', url);
+            });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "target": "mahalakshmipuja",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
