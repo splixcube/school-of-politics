@@ -265,8 +265,8 @@
         async function updateFirebaseDocument(docId, orderId, paymentId) {
             try {
                 const updateData = {
-                    orderId: orderId,
-                    paymentId: paymentId
+                    order: orderId,
+                    payment_id: paymentId
                 };
 
                 await db.collection('palmReadings').doc(docId).update(updateData);
@@ -284,18 +284,11 @@
             console.log('Query parameters:', queryParams);
 
             const documentId = queryParams.id;
-            const orderId = queryParams.orderid || queryParams.orderId;
+            const orderId = queryParams.order;
             const paymentId = queryParams.payment_id;
-            console.log('Document ID:', documentId);
-                console.log('Order ID:', orderId);
-                console.log('Payment ID:', paymentId);
 
             // If we have the document ID and payment details, update Firebase
             if (documentId && orderId && paymentId) {
-                console.log('Updating Firebase document with payment details...');
-                console.log('Document ID:', documentId);
-                console.log('Order ID:', orderId);
-                console.log('Payment ID:', paymentId);
 
                 updateFirebaseDocument(documentId, orderId, paymentId)
                     .then(() => {
