@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "shanidev-new",
+    "target": "mahalakshmipuja",
     "public": ".",
     "ignore": [
       "firebase.json",

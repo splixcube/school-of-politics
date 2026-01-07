@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "shivpuja",
+    "target": "makarsankrantipuja",
     "public": ".",
     "ignore": [
       "firebase.json",

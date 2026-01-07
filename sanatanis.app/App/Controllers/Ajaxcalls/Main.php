@@ -89,7 +89,10 @@ class Main extends \Core\MainController
 				'Rahu Poorna Sankalp Pooja' => 499,
 				'Mahalakshmi Pooja' => 99,
 				'Mahalakshmi Sankalp Pooja' => 199,
-				'Mahalakshmi Poorna Sankalp Pooja' => 499
+				'Mahalakshmi Poorna Sankalp Pooja' => 499,
+				'Makar Sankranti Pooja' => 99,
+				'Makar Sankranti Sankalp Pooja' => 199,
+				'Makar Sankranti Poorna Sankalp Pooja' => 499
 			];
 
 
