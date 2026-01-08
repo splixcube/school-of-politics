@@ -92,7 +92,9 @@ class Main extends \Core\MainController
 				'Mahalakshmi Poorna Sankalp Pooja' => 499,
 				'Makar Sankranti Pooja' => 99,
 				'Makar Sankranti Sankalp Pooja' => 199,
-				'Makar Sankranti Poorna Sankalp Pooja' => 499
+				'Makar Sankranti Poorna Sankalp Pooja' => 499,
+				'GitaDaily Monthly' => 99,
+				'GitaDaily Premium Monthly' => 199
 			];
 
 
