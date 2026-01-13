@@ -781,26 +781,25 @@
 				
 				console.log("Booking selected plan:", planName, "Price:", planPrice);
 			} else {
-				// If no plan is selected, use the highest price package (₹499)
-				let highestPrice = 0;
-				let highestPricePlan = null;
+				// If no plan is selected, use the ₹199 package as default
+				let defaultPlan = null;
 				
 				$(".booking-plan-card-wrapper").each(function() {
 					const price = parseInt($(this).data("plan-price")) || 0;
-					if (price > highestPrice) {
-						highestPrice = price;
-						highestPricePlan = $(this);
+					if (price === 199) {
+						defaultPlan = $(this);
+						return false; // Break the loop
 					}
 				});
 				
-				if (highestPricePlan) {
-					const planName = highestPricePlan.data("plan-name");
-					const planPrice = highestPricePlan.data("plan-price");
+				if (defaultPlan) {
+					const planName = defaultPlan.data("plan-name");
+					const planPrice = defaultPlan.data("plan-price");
 					$("#package-type").val(planName);
 					$("#package-price").val(planPrice);
-					console.log("Using highest package (default):", planName, "Price:", planPrice);
+					console.log("Using default package (₹199):", planName, "Price:", planPrice);
 				} else {
-					// Fallback to button value if no plans found
+					// Fallback to button value if no ₹199 plan found
 					const packageType = $(this).val();
 					$("#package-type").val(packageType);
 					console.log("Button clicked:", packageType);
