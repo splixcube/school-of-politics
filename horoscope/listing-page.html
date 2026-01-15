@@ -124,7 +124,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>WhatsApp</th>
+                                        <th>Gender</th>
                                         <th>Place of Birth</th>
                                         <th>Date of Birth</th>
                                         <th>Time of Birth</th>
@@ -242,11 +242,11 @@
                 row.innerHTML = `
                     <td>${index + 1}</td>
                     <td>${submission.name || '-'}</td>
-                    <td>${submission.whatsapp || '-'}</td>
+                    <td style="text-transform: capitalize;">${submission.gender || '-'}</td>
                     <td>${submission?.stateOfBirth || ''} ${submission?.stateOfBirth ? ',' : ''} 
                         ${submission?.cityOfBirth || '-'} </td>
                     <td>${submission.dateOfBirth || '-'}</td>
-                    <td>${submission.timeOfBirth}</td>
+                    <td>${formatTime(submission.timeOfBirth)}</td>
                     <td>${submission.payment_id || '-'}</td>
                     <td>${submission.order || '-'}</td>
                     <td><span class="status-badge ${statusClass}">${statusText}</span></td>

@@ -56,10 +56,10 @@
                 
                 <!-- Progress Bar -->
                  <div class="d-flex mb-4 align-items-center">
-                    <span class="step-count" id="stepCount">1/6</span>
+                    <span class="step-count" id="stepCount">1/5</span>
                     <div class="progress-container w-100 ms-2">
-                        <div class="progress" style="height: 8px; background-color: var(--secondary);">
-                            <div class="progress-bar" role="progressbar" style="width: 16.67%; background-color: #F8B239; transition: width 0.3s ease;" id="progressBar"></div>
+                        <div class="progress" style="height: 3px; background-color: var(--secondary);">
+                            <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #F8B239; transition: width 0.3s ease;" id="progressBar"></div>
                         </div>
                     </div>
                  </div>
@@ -71,20 +71,20 @@
                     <!-- Step 1: Name -->
                     <div class="step-content" id="step1">
                         <div class="form-header text-center mb-4">
-                            <h2 class="step-title">What’s your name?</h2>
+                            <h2 class="step-title">Your full name</h2>
                         </div>
                         <form id="horoscopeForm">
                             <div class="form-group mb-4">
                                 <input type="text" class="form-control form-input" id="name" name="name" placeholder="Enter your full name" required>
+                                <div class="error-message" id="nameError" style="display: none;">Please enter your full name</div>
                             </div>
-                            <p class="fs-12 mt-3 text-center text-white onest-font">Private &nbsp; &nbsp;  Takes less than 1 minute</p>
-                        </form>
+                         </form>
                     </div>  
 
                     <!-- Step 2: Gender Selection -->
                     <div class="step-content" id="step2" style="display: none;">
                         <div class="form-header text-center mb-4">
-                            <h2 class="step-title">Select Your Gender</h2>
+                            <h2 class="step-title">Your gender</h2>
                         </div>
                         <div class="gender-selection">
                             <button type="button" class="gender-btn" id="gender-male" onclick="selectGenderStep2('male')">
@@ -100,25 +100,13 @@
                                 <span class="gender-label">Other</span>
                             </button>
                         </div>
+                        <div class="error-message text-center mt-3" id="genderError" style="display: none;">Please select your gender</div>
                     </div>
 
-                    <!-- Step 3: WhatsApp Number -->
+                    <!-- Step 3: Place of Birth -->
                     <div class="step-content" id="step3" style="display: none;">
                         <div class="form-header text-center mb-4">
-                            <h2 class="step-title">WhatsApp Number</h2>
-                        </div>
-                        <form>
-                            <div class="form-group mb-4">
-                                <input type="tel" class="form-control form-input" id="whatsapp" name="whatsapp" placeholder="Enter your 10-digit WhatsApp number" ">
-                              
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Step 4: Place of Birth -->
-                    <div class="step-content" id="step4" style="display: none;">
-                        <div class="form-header text-center mb-4">
-                            <h2 class="step-title">Where were you born?</h2>
+                            <h2 class="step-title">Your place of birth</h2>
                         </div>
                         <form>
                             <div class="form-group mb-4">
@@ -161,129 +149,37 @@
                                     <option value="Lakshadweep">Lakshadweep</option>
                                     <option value="Puducherry">Puducherry</option>
                                 </select>
+                                <div class="error-message" id="stateOfBirthError" style="display: none;">Please select a state</div>
                             </div>
                             <div class="form-group mb-4">
                                 <input type="text" class="form-control form-input" id="cityOfBirth" name="cityOfBirth" placeholder="Enter City" required>
+                                <div class="error-message" id="cityOfBirthError" style="display: none;">Please enter your city</div>
                             </div>
                         </form>
                     </div>
 
-                    <!-- Step 5: Date of Birth -->
-                    <div class="step-content" id="step5" style="display: none;">
+                    <!-- Step 4: Date of Birth -->
+                    <div class="step-content" id="step4" style="display: none;">
                         <div class="form-header text-center mb-4">
-                            <h2 class="step-title">Date of Birth</h2>
+                            <h2 class="step-title">Your Date of Birth</h2>
                         </div>
                         <form>
                             <div class="form-group mb-4">
                                 <input type="date" class="form-control form-input" id="dateOfBirth" name="dateOfBirth" required>
+                                <div class="error-message" id="dateOfBirthError" style="display: none;">Please select your date of birth</div>
                             </div>
                         </form>
                     </div>
 
-                    <!-- Step 6: Time of Birth -->
-                    <div class="step-content" id="step6" style="display: none;">
+                    <!-- Step 5: Time of Birth -->
+                    <div class="step-content" id="step5" style="display: none;">
                         <div class="form-header text-center mb-4">
-                            <h2 class="step-title">What time were you born?</h2>
+                            <h2 class="step-title">Time of birth</h2>
                         </div>
                         <form>
                             <div class="form-group mb-4">
-                                <div class="d-flex align-items-center justify-content-between gap-3">
-                                    <!-- Hour Select -->
-                                    <select class="form-control form-input time-select" id="hourOfBirth" name="hourOfBirth" required style="width: auto; min-width: 85px;text-align: center;
-    padding: 12px 0px !important;">
-                                        <option value="">Hour</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                    </select>
-                                    
-                                    <span class="text-white" style="font-size: 20px;">:</span>
-                                    
-                                    <!-- Minute Select -->
-                                    <select class="form-control form-input time-select" id="minuteOfBirth" name="minuteOfBirth" required style="width: auto; min-width: 85px;text-align: center;
-    padding: 12px 0px !important;">
-                                        <option value="">Min</option>
-                                        <option value="00">00</option>
-                                        <option value="01">01</option>
-                                        <option value="02">02</option>
-                                        <option value="03">03</option>
-                                        <option value="04">04</option>
-                                        <option value="05">05</option>
-                                        <option value="06">06</option>
-                                        <option value="07">07</option>
-                                        <option value="08">08</option>
-                                        <option value="09">09</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-                                        <option value="32">32</option>
-                                        <option value="33">33</option>
-                                        <option value="34">34</option>
-                                        <option value="35">35</option>
-                                        <option value="36">36</option>
-                                        <option value="37">37</option>
-                                        <option value="38">38</option>
-                                        <option value="39">39</option>
-                                        <option value="40">40</option>
-                                        <option value="41">41</option>
-                                        <option value="42">42</option>
-                                        <option value="43">43</option>
-                                        <option value="44">44</option>
-                                        <option value="45">45</option>
-                                        <option value="46">46</option>
-                                        <option value="47">47</option>
-                                        <option value="48">48</option>
-                                        <option value="49">49</option>
-                                        <option value="50">50</option>
-                                        <option value="51">51</option>
-                                        <option value="52">52</option>
-                                        <option value="53">53</option>
-                                        <option value="54">54</option>
-                                        <option value="55">55</option>
-                                        <option value="56">56</option>
-                                        <option value="57">57</option>
-                                        <option value="58">58</option>
-                                        <option value="59">59</option>
-                                    </select>
-                                    
-                                    <!-- AM/PM Select -->
-                                    <select class="form-control form-input time-select" id="ampmOfBirth" name="ampmOfBirth" required style="width: auto; text-align: center;
-    padding: 12px 0px !important;min-width: 80px;">
-                                        <option value="">AM/PM</option>
-                                        <option value="AM">AM</option>
-                                        <option value="PM">PM</option>
-                                    </select>
-                                </div>
-                                <!-- Hidden input to store 24-hour format time -->
-                                <input type="hidden" id="timeOfBirth" name="timeOfBirth">
+                                <input type="time" class="form-control form-input" id="timeOfBirth" name="timeOfBirth" required>
+                                <div class="error-message" id="timeOfBirthError" style="display: none;">Please select your time of birth</div>
                             </div>
                         </form>
                     </div>
@@ -294,9 +190,7 @@
     
     <!-- Fixed Bottom Button Container -->
     <div class="fixed-bottom-button" id="fixedBottomButton">
-        <p class="fs-12 text-center text-tertiary onest-font">
-            Created by the best vedic astrologers of the country. Get detailed report at ₹299
-        </p>
+       
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10">
@@ -309,15 +203,18 @@
                 </div>
             </div>
         </div>
+        <p class="fs-12 mb-0 text-center text-tertiary onest-font mt-2">
+            Secure. Takes less than a minute
+        </p>
     </div>
 
     <script>
         let currentStep = 1;
-        const totalSteps = 6;
+        const totalSteps = 5;
 
         function updateProgress() {
             // Calculate progress percentage based on current step
-            // Step 1 = 16.67%, Step 2 = 33.33%, Step 3 = 50%, Step 4 = 66.67%, Step 5 = 83.33%, Step 6 = 100%
+            // Step 1 = 20%, Step 2 = 40%, Step 3 = 60%, Step 4 = 80%, Step 5 = 100%
             const progress = (currentStep / totalSteps) * 100;
             const progressBar = document.getElementById('progressBar');
             if (progressBar) {
@@ -363,39 +260,96 @@
             updateProgress();
         }
 
-        function nextStep() {
-            // Special validation for step 2 (gender selection)
-            if (currentStep === 2) {
+        function clearErrors() {
+            // Clear all error messages and invalid classes
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.style.display = 'none';
+            });
+            document.querySelectorAll('.is-invalid').forEach(input => {
+                input.classList.remove('is-invalid');
+            });
+        }
+
+        function clearFieldError(fieldId, errorId) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(errorId);
+            if (field) {
+                field.classList.remove('is-invalid');
+            }
+            if (error) {
+                error.style.display = 'none';
+            }
+        }
+
+        function showError(errorId, message) {
+            const errorElement = document.getElementById(errorId);
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+
+        function validateStep(step) {
+            clearErrors();
+            let isValid = true;
+
+            if (step === 1) {
+                // Validate Name
+                const nameInput = document.getElementById('name');
+                if (!nameInput.value.trim()) {
+                    nameInput.classList.add('is-invalid');
+                    showError('nameError', 'Please enter your full name');
+                    isValid = false;
+                }
+            } else if (step === 2) {
+                // Validate Gender
                 if (!selectedGender) {
-                    // Show error message
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Gender Required',
-                        text: 'Please select your gender to continue.',
-                        confirmButtonColor: '#5F9598',
-                        confirmButtonText: 'OK'
-                    });
-                    return;
+                    showError('genderError', 'Please select your gender');
+                    isValid = false;
+                }
+            } else if (step === 3) {
+                // Validate Place of Birth (State and City)
+                const stateSelect = document.getElementById('stateOfBirth');
+                const cityInput = document.getElementById('cityOfBirth');
+                
+                if (!stateSelect.value) {
+                    stateSelect.classList.add('is-invalid');
+                    showError('stateOfBirthError', 'Please select a state');
+                    isValid = false;
+                }
+                
+                if (!cityInput.value.trim()) {
+                    cityInput.classList.add('is-invalid');
+                    showError('cityOfBirthError', 'Please enter your city');
+                    isValid = false;
+                }
+            } else if (step === 4) {
+                // Validate Date of Birth
+                const dateInput = document.getElementById('dateOfBirth');
+                if (!dateInput.value) {
+                    dateInput.classList.add('is-invalid');
+                    showError('dateOfBirthError', 'Please select your date of birth');
+                    isValid = false;
+                }
+            } else if (step === 5) {
+                // Validate Time of Birth
+                const timeInput = document.getElementById('timeOfBirth');
+                if (!timeInput.value) {
+                    timeInput.classList.add('is-invalid');
+                    showError('timeOfBirthError', 'Please select your time of birth');
+                    isValid = false;
                 }
             }
-            
+
+            return isValid;
+        }
+
+        function nextStep() {
             // Validate current step
-            const currentStepElement = document.getElementById('step' + currentStep);
-            const input = currentStepElement.querySelector('input[required]');
-            
-            if (input && !input.value.trim()) {
-                input.classList.add('is-invalid');
+            if (!validateStep(currentStep)) {
                 return;
             }
             
-            // Special validation for WhatsApp number (step 3) - must be exactly 10 digits
-           /*  if (currentStep === 3) {
-                const whatsappInput = document.getElementById('whatsapp');
-                const whatsappValue = whatsappInput.value.trim().replace(/\D/g, ''); 
-                
-               
-            }
-             */
             if (currentStep < totalSteps) {
                 currentStep++;
                 showStep(currentStep);
@@ -434,6 +388,8 @@
             selectedGender = gender;
             console.log('Gender selected in step 2:', gender);
             highlightSelectedGender();
+            // Clear gender error when gender is selected
+            clearFieldError('genderError', 'genderError');
         }
 
         function highlightSelectedGender() {
@@ -451,73 +407,24 @@
             }
         }
 
-        // Convert AM/PM time to 24-hour format
-        function convertTo24Hour(hour, minute, ampm) {
-            if (!hour || !minute || !ampm) {
-                return '';
-            }
-            
-            let hour24 = parseInt(hour);
-            const minute24 = minute.padStart(2, '0');
-            
-            if (ampm === 'PM' && hour24 !== 12) {
-                hour24 += 12;
-            } else if (ampm === 'AM' && hour24 === 12) {
-                hour24 = 0;
-            }
-            
-            return `${hour24.toString().padStart(2, '0')}:${minute24}`;
-        }
-
-        // Update hidden timeOfBirth field when time selects change
-        function updateTimeOfBirth() {
-            const hour = document.getElementById('hourOfBirth').value;
-            const minute = document.getElementById('minuteOfBirth').value;
-            const ampm = document.getElementById('ampmOfBirth').value;
-            const timeOfBirthInput = document.getElementById('timeOfBirth');
-            
-            if (hour && minute && ampm) {
-                timeOfBirthInput.value = hour + ':' + minute + ' ' + ampm;
-               /*  const time24 = convertTo24Hour(hour, minute, ampm);
-                timeOfBirthInput.value = time24; */
-            } else {
-                timeOfBirthInput.value = '';
-            }
-        }
-
         async function submitForm(event) {
             event.preventDefault();
             
-            // Validate last step - check if all time fields are filled
-            const hour = document.getElementById('hourOfBirth').value;
-            const minute = document.getElementById('minuteOfBirth').value;
-            const ampm = document.getElementById('ampmOfBirth').value;
-            
-            if (!hour || !minute || !ampm) {
-                // Show error message
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Time Required',
-                    text: 'Please select hour, minute, and AM/PM to continue.',
-                    confirmButtonColor: '#5F9598',
-                    confirmButtonText: 'OK'
-                });
+            // Validate last step - check if time is filled
+            const timeInput = document.getElementById('timeOfBirth');
+            if (!timeInput.value) {
+                timeInput.classList.add('is-invalid');
+                showError('timeOfBirthError', 'Please select your time of birth');
                 return;
             }
-            
-            // Update the hidden timeOfBirth field
-            updateTimeOfBirth();
             
             // Collect all form data
             const stateOfBirth = document.getElementById('stateOfBirth').value;
             const cityOfBirth = document.getElementById('cityOfBirth').value;
-
-        //    const timeOfBirth = document.getElementById('timeOfBirth').value + ' ' + document.getElementById('ampmOfBirth').value;
             
             formDataToStore = {
                 gender: selectedGender || '',
                 name: document.getElementById('name').value,
-                whatsapp: document.getElementById('whatsapp').value,
                 stateOfBirth: stateOfBirth,
                 cityOfBirth: cityOfBirth,
                 dateOfBirth: document.getElementById('dateOfBirth').value,
@@ -730,19 +637,40 @@
                 return;
             }
             
-            // Add event listeners for time selects
-            const hourSelect = document.getElementById('hourOfBirth');
-            const minuteSelect = document.getElementById('minuteOfBirth');
-            const ampmSelect = document.getElementById('ampmOfBirth');
+            // Add event listeners to clear errors when users interact with fields
+            const nameInput = document.getElementById('name');
+            if (nameInput) {
+                nameInput.addEventListener('input', function() {
+                    clearFieldError('name', 'nameError');
+                });
+            }
             
-            if (hourSelect) {
-                hourSelect.addEventListener('change', updateTimeOfBirth);
+            const stateSelect = document.getElementById('stateOfBirth');
+            if (stateSelect) {
+                stateSelect.addEventListener('change', function() {
+                    clearFieldError('stateOfBirth', 'stateOfBirthError');
+                });
             }
-            if (minuteSelect) {
-                minuteSelect.addEventListener('change', updateTimeOfBirth);
+            
+            const cityInput = document.getElementById('cityOfBirth');
+            if (cityInput) {
+                cityInput.addEventListener('input', function() {
+                    clearFieldError('cityOfBirth', 'cityOfBirthError');
+                });
             }
-            if (ampmSelect) {
-                ampmSelect.addEventListener('change', updateTimeOfBirth);
+            
+            const dateInput = document.getElementById('dateOfBirth');
+            if (dateInput) {
+                dateInput.addEventListener('change', function() {
+                    clearFieldError('dateOfBirth', 'dateOfBirthError');
+                });
+            }
+            
+            const timeInput = document.getElementById('timeOfBirth');
+            if (timeInput) {
+                timeInput.addEventListener('change', function() {
+                    clearFieldError('timeOfBirth', 'timeOfBirthError');
+                });
             }
             
             // Otherwise, show step 1 initially

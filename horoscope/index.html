@@ -9,6 +9,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+   <style>
+        .home-chart-img{
+            width: 80%;
+            height: 100%;
+            object-fit: contain;
+        }
+   </style>
 </head>
 <body>
  <div class="cosmic-background">
@@ -18,59 +25,71 @@
  <div class="container wrapper px-3 py-4">
     <div class="row">
         <div class="col-md-12">
-            <h2 class="fs-30 fw-700 text-center times-font">Know what’s ahead. Act at the right time.</h2>
-            <p class="fs-12 text-tertiary text-center times-font">
-                Personalised horoscope based on your exact birth details, created by the best vedic astrologers in India
+            <h2 class="fs-30 fw-700 mb-3 text-center times-font">Know what’s ahead. Act at the right time.</h2>
+            <p class="fs-12 text-tertiary mb-0 text-center times-font">
+               A Personalised Vedic horoscope based on your exact birth details.
             </p>
         </div>
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 mt-3 text-center">
             <img src="assets/images/border.svg" alt="Banner" class="img-fluid">
         </div>
-        <div class="col-md-12 text-center">
-            <img src="assets/images/home-chart.svg" alt="Banner" class="img-fluid">
+        <div class="col-md-12 text-center mt-3">
+            <img src="assets/images/home-chart.svg" alt="Banner" class="home-chart-img">
         </div>
 
         <div class="col-10 mx-auto my-3">
+            <p style="padding-left: 22px;">You'll get insights on</p>
             <div class="featured-points">
+            
                 <ul>
                     <li>
                         <img src="assets/images/check.svg" alt="Banner" class="img-fluid">
                         <div>
-                            <h3 class="fs-16 mb-1 text-tertiary fw-500 onest-font">Current Dasha & life Phase</h3>
-                            <p class="fs-12 text-tertiary onest-font fw-300">Know where you’re headed</p>
+                            <p class="fs-12 text-tertiary onest-font fw-300">Your current life phase & direction</p>
                         </div>
                     </li>
                     <li>
                         <img src="assets/images/check.svg" alt="Banner" class="img-fluid">
                         <div>
-                            <h3 class="fs-16 mb-1  text-tertiary fw-500 onest-font">What’s Blocking You</h3>
-                            <p class="fs-12 text-tertiary onest-font fw-300">Career, money, relationship issues</p>
+                            <p class="fs-12 text-tertiary onest-font fw-300">What’s Holding You Back</p>
                         </div>
                     </li>
                     <li>
                         <img src="assets/images/check.svg" alt="Banner" class="img-fluid">
                         <div>
-                            <h3 class="fs-16 mb-1  text-tertiary fw-500 onest-font">Guidance & Remedies</h3>
-                            <p class="fs-12 text-tertiary onest-font fw-300">Stones, rituals, favorable timing</p>
+                            <p class="fs-12 text-tertiary onest-font fw-300">The right time to act or wait</p>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="col-md-12">
-            <p class="text-tertiary text-center fs-12 onest-font" style="    font-weight: 300;">Created by the best vedic astrologers of the country. Get detailed report at ₹299.</p>
-        </div>
-        <div class="col-md-12">
+     <!--    <div class="col-md-12">
             <a href="step-form.html">
             <button type="button" class="btn primary-custom w-100">
                 Next 
                 <img src="assets/images/arrow-r.svg" alt="Banner" class="img-fluid ms-2">
             </button>
             </a>
-        </div>
+        </div> -->
     </div>
 
  </div>
+
+     <!-- Fixed Bottom Button Container -->
+     <div class="fixed-bottom-button" id="fixedBottomButton">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <a href="step-form.html">
+                        <button type="button" class="btn primary-custom w-100">
+                            Next 
+                            <img src="assets/images/arrow-r.svg" alt="Banner" class="img-fluid ms-2">
+                        </button>
+                        </a>
+                </div>
+            </div>
+        </div>
+    </div>
  
 </body>
 </html>

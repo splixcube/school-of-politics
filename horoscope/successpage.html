@@ -71,86 +71,82 @@
             <div class="col-12 col-md-6 col-lg-5">
     <div class="content-wrapper mt-4">
         <div id="loadingContent">
-            <h2 class="fs-30 fw-700 text-center text-tertiary onest-font">Your birth chart is prepared</h2>
-           <div class="birth-chart-container">
-            <div class="chart">
-                <img src="assets/images/success-chart.svg" alt="Birth Chart" class="birth-chart-img">
-            </div>
+            <h2 class="fs-28 mb-3 fw-700  text-tertiary onest-font">
+                Thank you for sharing your details.
+            </h2>
+            <p class="mb-3 text-tertiary onest-font">
+                We're carefully analysing your information and 
+                preparing your personalised Vedic horoscope.
+            </p>
+            <p class="mb-3 text-tertiary onest-font">
+                You'll receive it as soon as it's ready.
+            </p>
+            <p>Step 3 of 4 - Creating your horoscope.</p>
+          <div class="birth-chart-container">
+                <div class="chart">
+                    <img src="assets/images/success-chart.svg" alt="Birth Chart" class="birth-chart-img">
+                </div>
             </div> 
         </div>
         
         <div id="successContent" style="display: none;">
-            <h2 class="fs-30 fw-700 text-center text-tertiary onest-font">Your birth chart is prepared</h2>
+            <h2 class="fs-28 mb-3 fw-700  text-tertiary onest-font">
+                Thank you for sharing your details.
+            </h2>
+            <p class="mb-3 text-tertiary onest-font">
+                We're carefully analysing your information and 
+                preparing your personalised Vedic horoscope.
+            </p>
+            <p class="mb-3 text-tertiary onest-font">
+                You'll receive it as soon as it's ready.
+            </p>
+            <p>Step 3 of 4 - Creating your horoscope.</p>
           <div class="birth-chart-container">
                 <div class="chart">
                     <img src="assets/images/success-chart.svg" alt="Birth Chart" class="birth-chart-img">
                 </div>
             </div> 
             
-                <div class="col-11 mx-auto mb-3">
-                    <div class="success-message">
-                    <div class="featured-points">
-                        <h4 class="mb-3">What happens next</h4>
-                        <ul>
-                            <li>
-                                <img src="assets/images/check.svg" alt="Banner" class="img-fluid">
-                                <div>
-                                    <h3 class="fs-14 text-tertiary fw-400 onest-font">Your birth chart is calculated</h3>
-                               </div>
-                            </li>
-                            <li>
-                                <img src="assets/images/check.svg" alt="Banner" class="img-fluid">
-                                <div>
-                                    <h3 class="fs-14 text-tertiary fw-400 onest-font">Current life phase and challenges are identified</h3>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="assets/images/check.svg" alt="Banner" class="img-fluid">
-                                <div>
-                                    <h3 class="fs-14 text-tertiary fw-400 onest-font">Favourable and difficult periods are mapped</h3>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+              
         </div>
         
   
     </div>
-     <!-- Fixed Bottom Button Container -->
-  <div style="position: relative; z-index: 9;    padding-bottom: 2rem;" >
-    <div class="d-flex mx-3">
-        <span>
-            🔒
-        </span>
-        <p class="fs-12 ms-2 text-tertiary onest-font">
-            You’ll receive a detailed analysis with recommendations in a few hours on WhatsApp. <br>
-            No spam. No promotions. Only your report.
+  
+
+</div>
+</div>
+</div>
+
+   <!-- Fixed Bottom Button Container -->
+   <div class="fixed-bottom-button" id="fixedBottomButton"  >
     
-        </p>
-    </div>
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
                 <div class="form-actions-bottom">
                     <button type="button" class="btn primary-custom" 
-                     onclick="nextStep()">Go Back 
-                        <img src="assets/images/arrow-r.svg" alt="Banner" class="img-fluid ms-2">
+                     onclick="nextStep()">Add Palmistry 
                     </button>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
+    <div class="d-flex mx-3 mt-2">
+        <span>
+            🔒
+        </span>
+        <p class="fs-12 ms-2 mb-0 text-tertiary onest-font">
+            Your information is private and securely handled.
+    
+        </p>
+    </div>
 </div>
  
     <script>
         function nextStep(){
-            window.location.href = 'index.html';
+            window.location.href = 'https://palmreader.web.app/';
         }
         // Handle payment success callback
         async function handlePaymentSuccess() {
