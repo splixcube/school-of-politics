@@ -29,6 +29,23 @@
         
         window.firestoreDb = db;
     </script>
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '806488919150102');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=806488919150102&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
     <style>
         .cosmic-background {
     position: fixed;
@@ -45,7 +62,7 @@
         width: 100%;
         height: 100%;
         background: radial-gradient(50% 50% at 50% 50%, #5E363F 0%, #232121 100%);
-        opacity: .5;
+        opacity: .8;
     }
 }
 .success-message{
@@ -68,7 +85,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-5">
+            <div class="col-12 mx-auto col-md-6 col-lg-5">
     <div class="content-wrapper mt-4">
         <div id="loadingContent">
             <h2 class="fs-28 mb-3 fw-700  text-tertiary onest-font">
@@ -133,7 +150,7 @@
             </div>
         </div>
     </div>
-    <div class="d-flex mx-3 mt-2">
+    <div class="d-flex justify-content-center align-items-center mx-3 mt-2">
         <span>
             🔒
         </span>

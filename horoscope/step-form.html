@@ -33,6 +33,23 @@
         
         window.firestoreDb = db;
     </script>
+    <!-- Meta Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '806488919150102');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=806488919150102&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
     <div class="cosmic-background">
@@ -172,10 +189,11 @@
                                 id="dateOfBirth" name="dateOfBirth" required readonly>
                                 <img src="assets/images/calendar.png" alt="Calendar" class="calendar-icon">
                             </div>
+                            <div class="error-message" id="dateOfBirthError" style="display: none;">Please select your date of birth</div>
                                 <input class="w-100 form-control form-input date-input-hidden"
                                 type="date" style="visibility: hidden;"
                                 id="dateOfBirthInput" name="dateOfBirthInput" required>
-                                <div class="error-message" id="dateOfBirthError" style="display: none;">Please select your date of birth</div>
+                             
                             </div>
                         </form>
                     </div>
@@ -194,10 +212,11 @@
                                 id="timeOfBirth" name="timeOfBirth" required readonly>
                                 <img src="assets/images/calendar.png" alt="Calendar" class="calendar-icon">
                                 </div>
+                                <div class="error-message" id="timeOfBirthError" style="display: none;">Please select your time of birth</div>
                                 <input class="w-100 form-control form-input time-input-hidden"
                                 type="time" style="visibility: hidden;"
                                 id="timeOfBirthInput" name="timeOfBirthInput" required>
-                                <div class="error-message" id="timeOfBirthError" style="display: none;">Please select your time of birth</div>
+                               
                             </div>
                         </form>
                     </div>
