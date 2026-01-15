@@ -165,7 +165,16 @@
                         </div>
                         <form>
                             <div class="form-group mb-4">
-                                <input type="date" class="form-control form-input" id="dateOfBirth" name="dateOfBirth" required>
+                                <div class="calendar-icon-container">
+                                <input class="w-100 form-control form-input"
+                                type="text"
+                                placeholder="dd/mm/yyyy"
+                                id="dateOfBirth" name="dateOfBirth" required readonly>
+                                <img src="assets/images/calendar.png" alt="Calendar" class="calendar-icon">
+                            </div>
+                                <input class="w-100 form-control form-input date-input-hidden"
+                                type="date" style="visibility: hidden;"
+                                id="dateOfBirthInput" name="dateOfBirthInput" required>
                                 <div class="error-message" id="dateOfBirthError" style="display: none;">Please select your date of birth</div>
                             </div>
                         </form>
@@ -178,7 +187,16 @@
                         </div>
                         <form>
                             <div class="form-group mb-4">
-                                <input type="time" class="form-control form-input" id="timeOfBirth" name="timeOfBirth" required>
+                                <div class="calendar-icon-container">
+                                <input class="w-100 form-control form-input"
+                                type="text"
+                                placeholder="HH:MM"
+                                id="timeOfBirth" name="timeOfBirth" required readonly>
+                                <img src="assets/images/calendar.png" alt="Calendar" class="calendar-icon">
+                                </div>
+                                <input class="w-100 form-control form-input time-input-hidden"
+                                type="time" style="visibility: hidden;"
+                                id="timeOfBirthInput" name="timeOfBirthInput" required>
                                 <div class="error-message" id="timeOfBirthError" style="display: none;">Please select your time of birth</div>
                             </div>
                         </form>
@@ -325,17 +343,25 @@
                 }
             } else if (step === 4) {
                 // Validate Date of Birth
-                const dateInput = document.getElementById('dateOfBirth');
+                const dateInput = document.getElementById('dateOfBirthInput');
+                const dateTextInput = document.getElementById('dateOfBirth');
                 if (!dateInput.value) {
                     dateInput.classList.add('is-invalid');
+                    if (dateTextInput) {
+                        dateTextInput.classList.add('is-invalid');
+                    }
                     showError('dateOfBirthError', 'Please select your date of birth');
                     isValid = false;
                 }
             } else if (step === 5) {
                 // Validate Time of Birth
-                const timeInput = document.getElementById('timeOfBirth');
+                const timeInput = document.getElementById('timeOfBirthInput');
+                const timeTextInput = document.getElementById('timeOfBirth');
                 if (!timeInput.value) {
                     timeInput.classList.add('is-invalid');
+                    if (timeTextInput) {
+                        timeTextInput.classList.add('is-invalid');
+                    }
                     showError('timeOfBirthError', 'Please select your time of birth');
                     isValid = false;
                 }
@@ -411,9 +437,13 @@
             event.preventDefault();
             
             // Validate last step - check if time is filled
-            const timeInput = document.getElementById('timeOfBirth');
+            const timeInput = document.getElementById('timeOfBirthInput');
+            const timeTextInput = document.getElementById('timeOfBirth');
             if (!timeInput.value) {
                 timeInput.classList.add('is-invalid');
+                if (timeTextInput) {
+                    timeTextInput.classList.add('is-invalid');
+                }
                 showError('timeOfBirthError', 'Please select your time of birth');
                 return;
             }
@@ -427,8 +457,8 @@
                 name: document.getElementById('name').value,
                 stateOfBirth: stateOfBirth,
                 cityOfBirth: cityOfBirth,
-                dateOfBirth: document.getElementById('dateOfBirth').value,
-                timeOfBirth: document.getElementById('timeOfBirth').value,
+                dateOfBirth: document.getElementById('dateOfBirthInput').value,
+                timeOfBirth: document.getElementById('timeOfBirthInput').value,
                 payment_status: 'pending',
                 created_at: new Date().toISOString()
             };
@@ -659,17 +689,104 @@
                 });
             }
             
-            const dateInput = document.getElementById('dateOfBirth');
-            if (dateInput) {
+            const dateTextInput = document.getElementById('dateOfBirth');
+            const dateInput = document.getElementById('dateOfBirthInput');
+            
+            if (dateTextInput && dateInput) {
+                // Format date to dd/mm/yyyy
+                function formatDate(dateString) {
+                    if (!dateString) return '';
+                    const date = new Date(dateString + 'T00:00:00');
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const year = date.getFullYear();
+                    return `${day}/${month}/${year}`;
+                }
+                
+                // Open date picker when text input is clicked
+                dateTextInput.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (dateInput.showPicker) {
+                        dateInput.showPicker();
+                    } else {
+                        // Fallback for browsers that don't support showPicker()
+                        dateInput.focus();
+                        dateInput.click();
+                    }
+                });
+                
+                dateTextInput.addEventListener('focus', function(e) {
+                    e.preventDefault();
+                    if (dateInput.showPicker) {
+                        dateInput.showPicker();
+                    } else {
+                        // Fallback for browsers that don't support showPicker()
+                        dateInput.focus();
+                        dateInput.click();
+                    }
+                });
+                
+                // Update text input when date is selected
                 dateInput.addEventListener('change', function() {
+                    const formattedDate = formatDate(this.value);
+                    dateTextInput.value = formattedDate;
                     clearFieldError('dateOfBirth', 'dateOfBirthError');
+                    clearFieldError('dateOfBirthInput', 'dateOfBirthError');
+                });
+                
+                // Also listen for input event (for mobile)
+                dateInput.addEventListener('input', function() {
+                    const formattedDate = formatDate(this.value);
+                    dateTextInput.value = formattedDate;
                 });
             }
             
-            const timeInput = document.getElementById('timeOfBirth');
-            if (timeInput) {
+            const timeTextInput = document.getElementById('timeOfBirth');
+            const timeInput = document.getElementById('timeOfBirthInput');
+            
+            if (timeTextInput && timeInput) {
+                // Format time to HH:MM (24-hour format)
+                function formatTime(timeString) {
+                    if (!timeString) return '';
+                    // timeString is already in HH:MM format from time input
+                    return timeString;
+                }
+                
+                // Open time picker when text input is clicked
+                timeTextInput.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (timeInput.showPicker) {
+                        timeInput.showPicker();
+                    } else {
+                        // Fallback for browsers that don't support showPicker()
+                        timeInput.focus();
+                        timeInput.click();
+                    }
+                });
+                
+                timeTextInput.addEventListener('focus', function(e) {
+                    e.preventDefault();
+                    if (timeInput.showPicker) {
+                        timeInput.showPicker();
+                    } else {
+                        // Fallback for browsers that don't support showPicker()
+                        timeInput.focus();
+                        timeInput.click();
+                    }
+                });
+                
+                // Update text input when time is selected
                 timeInput.addEventListener('change', function() {
+                    const formattedTime = formatTime(this.value);
+                    timeTextInput.value = formattedTime;
                     clearFieldError('timeOfBirth', 'timeOfBirthError');
+                    clearFieldError('timeOfBirthInput', 'timeOfBirthError');
+                });
+                
+                // Also listen for input event (for mobile)
+                timeInput.addEventListener('input', function() {
+                    const formattedTime = formatTime(this.value);
+                    timeTextInput.value = formattedTime;
                 });
             }
             
