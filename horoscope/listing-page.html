@@ -42,9 +42,9 @@
             border-collapse: collapse;
             background-color: transparent;
         }
-        thead {
+      /*   thead {
             background-color: var(--secondary);
-        }
+        } */
         th {
             color: var(--textcolor);
             padding: 15px;
@@ -103,7 +103,8 @@
     </style>
 </head>
 <body>
-    <div class="container my-5">
+    <div class="cosmic-background"></div>
+    <div class="container wrapper px-3 my-5">
         <div class="row justify-content-center">
             <div class="col-12">
                 <h1 class="page-title">Horoscope Data</h1>
@@ -242,9 +243,10 @@
                     <td>${index + 1}</td>
                     <td>${submission.name || '-'}</td>
                     <td>${submission.whatsapp || '-'}</td>
-                    <td>${submission.placeOfBirth || '-'}</td>
+                    <td>${submission?.stateOfBirth || ''} ${submission?.stateOfBirth ? ',' : ''} 
+                        ${submission?.cityOfBirth || '-'} </td>
                     <td>${submission.dateOfBirth || '-'}</td>
-                    <td>${formatTime(submission.timeOfBirth)}</td>
+                    <td>${submission.timeOfBirth}</td>
                     <td>${submission.payment_id || '-'}</td>
                     <td>${submission.order || '-'}</td>
                     <td><span class="status-badge ${statusClass}">${statusText}</span></td>
