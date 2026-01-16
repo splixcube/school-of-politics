@@ -187,13 +187,12 @@
                                 type="text"
                                 placeholder="dd/mm/yyyy"
                                 id="dateOfBirth" name="dateOfBirth" required readonly>
+                                <input class="w-100 form-control form-input date-input-hidden"
+                                type="date"
+                                id="dateOfBirthInput" name="dateOfBirthInput" required>
                                 <img src="assets/images/calendar.png" alt="Calendar" class="calendar-icon">
                             </div>
                             <div class="error-message" id="dateOfBirthError" style="display: none;">Please select your date of birth</div>
-                                <input class="w-100 form-control form-input date-input-hidden"
-                                type="date" style="visibility: hidden;"
-                                id="dateOfBirthInput" name="dateOfBirthInput" required>
-                             
                             </div>
                         </form>
                     </div>
@@ -210,13 +209,12 @@
                                 type="text"
                                 placeholder="HH:MM"
                                 id="timeOfBirth" name="timeOfBirth" required readonly>
+                                <input class="w-100 form-control form-input time-input-hidden"
+                                type="time"
+                                id="timeOfBirthInput" name="timeOfBirthInput" required>
                                 <img src="assets/images/calendar.png" alt="Calendar" class="calendar-icon">
                                 </div>
                                 <div class="error-message" id="timeOfBirthError" style="display: none;">Please select your time of birth</div>
-                                <input class="w-100 form-control form-input time-input-hidden"
-                                type="time" style="visibility: hidden;"
-                                id="timeOfBirthInput" name="timeOfBirthInput" required>
-                               
                             </div>
                         </form>
                     </div>
@@ -712,6 +710,10 @@
             const dateInput = document.getElementById('dateOfBirthInput');
             
             if (dateTextInput && dateInput) {
+                // Detect iOS
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                             (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                
                 // Format date to dd/mm/yyyy
                 function formatDate(dateString) {
                     if (!dateString) return '';
@@ -722,28 +724,57 @@
                     return `${day}/${month}/${year}`;
                 }
                 
-                // Open date picker when text input is clicked
-                dateTextInput.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if (dateInput.showPicker) {
-                        dateInput.showPicker();
-                    } else {
-                        // Fallback for browsers that don't support showPicker()
+                // For iOS: Let the date input handle clicks directly
+                // For other browsers: Use showPicker or click
+                if (isIOS) {
+                    // iOS requires direct interaction with the date input
+                    // The date input is already positioned over the text input
+                    // Just prevent the text input from receiving focus
+                    dateTextInput.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // On iOS, clicking the overlay date input will open the picker
                         dateInput.focus();
-                        dateInput.click();
-                    }
-                });
-                
-                dateTextInput.addEventListener('focus', function(e) {
-                    e.preventDefault();
-                    if (dateInput.showPicker) {
-                        dateInput.showPicker();
-                    } else {
-                        // Fallback for browsers that don't support showPicker()
+                    });
+                    
+                    dateTextInput.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
                         dateInput.focus();
-                        dateInput.click();
-                    }
-                });
+                    });
+                } else {
+                    // For Android and desktop browsers
+                    dateTextInput.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (dateInput.showPicker && typeof dateInput.showPicker === 'function') {
+                            try {
+                                dateInput.showPicker();
+                            } catch (err) {
+                                // Fallback if showPicker fails
+                                dateInput.focus();
+                                dateInput.click();
+                            }
+                        } else {
+                            dateInput.focus();
+                            dateInput.click();
+                        }
+                    });
+                    
+                    dateTextInput.addEventListener('focus', function(e) {
+                        e.preventDefault();
+                        if (dateInput.showPicker && typeof dateInput.showPicker === 'function') {
+                            try {
+                                dateInput.showPicker();
+                            } catch (err) {
+                                dateInput.focus();
+                                dateInput.click();
+                            }
+                        } else {
+                            dateInput.focus();
+                            dateInput.click();
+                        }
+                    });
+                }
                 
                 // Update text input when date is selected
                 dateInput.addEventListener('change', function() {
@@ -764,6 +795,10 @@
             const timeInput = document.getElementById('timeOfBirthInput');
             
             if (timeTextInput && timeInput) {
+                // Detect iOS
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                             (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                
                 // Format time to HH:MM (24-hour format)
                 function formatTime(timeString) {
                     if (!timeString) return '';
@@ -771,28 +806,57 @@
                     return timeString;
                 }
                 
-                // Open time picker when text input is clicked
-                timeTextInput.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if (timeInput.showPicker) {
-                        timeInput.showPicker();
-                    } else {
-                        // Fallback for browsers that don't support showPicker()
+                // For iOS: Let the time input handle clicks directly
+                // For other browsers: Use showPicker or click
+                if (isIOS) {
+                    // iOS requires direct interaction with the time input
+                    // The time input is already positioned over the text input
+                    // Just prevent the text input from receiving focus
+                    timeTextInput.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // On iOS, clicking the overlay time input will open the picker
                         timeInput.focus();
-                        timeInput.click();
-                    }
-                });
-                
-                timeTextInput.addEventListener('focus', function(e) {
-                    e.preventDefault();
-                    if (timeInput.showPicker) {
-                        timeInput.showPicker();
-                    } else {
-                        // Fallback for browsers that don't support showPicker()
+                    });
+                    
+                    timeTextInput.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
                         timeInput.focus();
-                        timeInput.click();
-                    }
-                });
+                    });
+                } else {
+                    // For Android and desktop browsers
+                    timeTextInput.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (timeInput.showPicker && typeof timeInput.showPicker === 'function') {
+                            try {
+                                timeInput.showPicker();
+                            } catch (err) {
+                                // Fallback if showPicker fails
+                                timeInput.focus();
+                                timeInput.click();
+                            }
+                        } else {
+                            timeInput.focus();
+                            timeInput.click();
+                        }
+                    });
+                    
+                    timeTextInput.addEventListener('focus', function(e) {
+                        e.preventDefault();
+                        if (timeInput.showPicker && typeof timeInput.showPicker === 'function') {
+                            try {
+                                timeInput.showPicker();
+                            } catch (err) {
+                                timeInput.focus();
+                                timeInput.click();
+                            }
+                        } else {
+                            timeInput.focus();
+                            timeInput.click();
+                        }
+                    });
+                }
                 
                 // Update text input when time is selected
                 timeInput.addEventListener('change', function() {
