@@ -141,7 +141,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Gender</th>
                                         <th>Place of Birth</th>
                                         <th>Date of Birth</th>
                                         <th>Time of Birth</th>
@@ -259,7 +258,6 @@
                 row.innerHTML = `
                     <td>${index + 1}</td>
                     <td>${submission.name || '-'}</td>
-                    <td style="text-transform: capitalize;">${submission.gender || '-'}</td>
                     <td>${submission?.stateOfBirth || ''} ${submission?.stateOfBirth ? ',' : ''} 
                         ${submission?.cityOfBirth || '-'} </td>
                     <td>${submission.dateOfBirth || '-'}</td>
