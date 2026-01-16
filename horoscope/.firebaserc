@@ -1,5 +1,15 @@
 {
   "projects": {
-    "default": "horoscope-81d33"
-  }
+    "default": "bhartievents-7ab0d"
+  },
+  "targets": {
+    "bhartievents-7ab0d": {
+      "hosting": {
+        "gethoroscope": [
+          "gethoroscope"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

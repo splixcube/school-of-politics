@@ -1,0 +1,7 @@
+{
+  "name": "amma",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

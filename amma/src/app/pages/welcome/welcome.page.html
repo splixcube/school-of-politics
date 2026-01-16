@@ -1,0 +1,93 @@
+
+<ion-content [fullscreen]="true">
+ <div class="wrapper">
+  <div class="overlay-gradient"></div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <h1 class="text-center text-primary leckerli-one-font">amMA</h1>
+      </ion-col>
+    </ion-row>
+
+    <!-- slides -->
+    <ion-row> 
+      <ion-col size="12">
+        <div class="slides-container">
+          <div class="slides-wrapper" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+            <div class="slide">
+              <div class="slide-img-container">
+                <ion-img src="assets/images/welcome-screen/welcome1.svg"></ion-img>
+              </div>
+
+              <div class="slide-text-container">
+              <ion-text class="slide-text-title">
+                Your health nurtures your baby's body and mind.
+              </ion-text> <br>
+              <ion-text class="slide-text-description">
+                We guide your food, rest, and daily care.
+              </ion-text>
+            </div>
+            </div>
+            <div class="slide">
+              <div class="slide-img-container">
+              <ion-img src="assets/images/welcome-screen/welcome2.svg"></ion-img>
+              </div>
+              <div class="slide-text-container">
+              <ion-text class="slide-text-title">
+                Your health nurtures your baby's body and mind.
+              </ion-text> <br>
+              <ion-text class="slide-text-description">
+                We guide your food, rest, and daily care.
+              </ion-text>
+            </div>
+            </div>
+            <div class="slide">
+              <div class="slide-img-container">
+              <ion-img src="assets/images/welcome-screen/welcome3.svg"></ion-img>
+              </div>
+              <div class="slide-text-container">
+
+              <ion-text class="slide-text-title">
+                Your health nurtures your baby's body and mind.
+              </ion-text> <br>
+              <ion-text class="slide-text-description">
+                We guide your food, rest, and daily care.
+              </ion-text>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination dots -->
+        <div class="pagination-dots">
+          @for (i of slidesArray; track i) {
+          <span 
+            class="dot" 
+            [class.active]="i === currentSlide">
+          </span>
+        }
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- fixed bottom buttons -->
+    <div class="fixed-bottom-buttons">
+    <ion-row>
+      <ion-col size="12">
+        <div class="back-custom-button-container">
+          @if (currentSlide > 0) {
+        <ion-button type="button" class="back-custom-button"
+        (click)="previousSlide()" [disabled]="currentSlide === 0">
+        <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+      </ion-button>}
+        <ion-button type="button" class="primary-custom-button" 
+        (click)="nextSlide()" >Next
+        <ion-icon name="arrow-forward-outline" class="text-white" slot="end"></ion-icon>
+      </ion-button>
+      </div>
+      </ion-col>
+    </ion-row>
+    </div>
+
+  </ion-grid>
+ </div>
+</ion-content>
