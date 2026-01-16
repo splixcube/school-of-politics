@@ -47,24 +47,7 @@ src="https://www.facebook.com/tr?id=806488919150102&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
     <style>
-        .cosmic-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    background-image: url('./assets/images/wrap2.svg');
-    .cosmic-background-overlay{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(50% 50% at 50% 50%, #5E363F 0%, #232121 100%);
-        opacity: .8;
-    }
-}
+  
 .success-message{
     background: #FFFFFF1A;
    padding: 20px;
@@ -73,56 +56,108 @@ src="https://www.facebook.com/tr?id=806488919150102&ev=PageView&noscript=1"
 .content-wrapper{
     position: relative;
     z-index: 9;
+    .chart{
+        text-align: center;
+        display: flex;
+        justify-content: center;
     .birth-chart-img{
-        width: 100%;
+        width: 70%;
 }
+}
+}
+
+.whatsapp-box{
+    border: 1px solid #4D4C4C;
+    padding: 10px;
+    border-radius: 8px;
+    .whatsapp-box-inner{
+        display: flex;
+    align-items: start;
+    gap: 10px;
+    p{
+        margin-bottom: 0px;
+        font-size: 14px;
+    }
+    }
+}
+.deep-insights-box{
+    background: #FFFFFF0A;
+    padding: 10px;
+    border: 1px solid #4D4C4C;
+    border-radius: 8px;
+    h5{
+        font-size: 16px;
+        font-weight: 500;
+        color: #ffffff;
+    }
+    p{
+        font-weight: 400;
+        color: #FFF9EF99;
+        font-size: 14px;
+    }
+}
+.line-separator{
+    height: 1px;
+    width: 100%;
+    background: #FFFFFF4D;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
     </style>
 </head>
 <body>
     <div class="cosmic-background">
-        <div class="cosmic-background-overlay"></div>
-    </div>
+  
     <div class="container">
         <div class="row">
             <div class="col-12 mx-auto col-md-6 col-lg-5">
     <div class="content-wrapper mt-4">
+
         <div id="loadingContent">
-            <h2 class="fs-28 mb-3 fw-700  text-tertiary onest-font">
-                Thank you for sharing your details.
-            </h2>
-            <p class="mb-3 text-tertiary onest-font">
-                We're carefully analysing your information and 
-                preparing your personalised Vedic horoscope.
-            </p>
-            <p class="mb-3 text-tertiary onest-font">
-                You'll receive it as soon as it's ready.
-            </p>
-            <p>Step 3 of 4 - Creating your horoscope.</p>
-          <div class="birth-chart-container">
-                <div class="chart">
-                    <img src="assets/images/success-chart.svg" alt="Birth Chart" class="birth-chart-img">
-                </div>
-            </div> 
+           <p class="text-center text-tertiary onest-font">Loading...</p>
         </div>
         
         <div id="successContent" style="display: none;">
-            <h2 class="fs-28 mb-3 fw-700  text-tertiary onest-font">
-                Thank you for sharing your details.
-            </h2>
-            <p class="mb-3 text-tertiary onest-font">
-                We're carefully analysing your information and 
-                preparing your personalised Vedic horoscope.
-            </p>
-            <p class="mb-3 text-tertiary onest-font">
-                You'll receive it as soon as it's ready.
-            </p>
-            <p>Step 3 of 4 - Creating your horoscope.</p>
-          <div class="birth-chart-container">
+            <div class="birth-chart-container">
                 <div class="chart">
-                    <img src="assets/images/success-chart.svg" alt="Birth Chart" class="birth-chart-img">
+                    <img src="assets/images/success.svg" alt="Birth Chart" class="birth-chart-img">
                 </div>
             </div> 
+            <h2 class="fs-28 mt-3  mb-3 fw-700 text-center title-shadow text-tertiary onest-font">
+                Your Horoscope Report is Being Prepared
+            </h2>
+            <p class="mb-3 fs-14 mx-3 text-center title-shadow text-tertiary onest-font">
+                Based on the details you shared, your personalised Vedic horoscope is currently being created.
+            </p>
+         
+            <div class="whatsapp-box">
+                <div class="whatsapp-box-inner">
+                    <img src="assets/images/whatsapp.svg" alt="WhatsApp" class="whatsapp-img">
+                    <p class=" text-tertiary onest-font">
+                        Your horoscope report will be sent to your WhatsApp number once it’s ready.
+                    </p>
+                </div>
+            </div>
+
+            <div class="line-separator">
+            </div>
+
+              <!-- Fixed Bottom Button Container -->
+   <div >
+    
+    
+    <div class="deep-insights-box">
+        <h5>Want deeper insights?</h5>
+        <p class="fs-12 mb-0  title-shadow-light onest-font mb-2">
+            You can also explore Palmistry to understand what your hands reveal about your life, personality, and future.
+        </p>
+        <div class="form-actions-bottom">
+            <button type="button" class="btn primary-custom" 
+             onclick="nextStep()">Add Palmistry 
+            </button>
+        </div>
+    </div>
+</div>
             
               
         </div>
@@ -135,30 +170,7 @@ src="https://www.facebook.com/tr?id=806488919150102&ev=PageView&noscript=1"
 </div>
 </div>
 
-   <!-- Fixed Bottom Button Container -->
-   <div class="fixed-bottom-button" id="fixedBottomButton"  >
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10">
-                <div class="form-actions-bottom">
-                    <button type="button" class="btn primary-custom" 
-                     onclick="nextStep()">Add Palmistry 
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex justify-content-center align-items-center mx-3 mt-2">
-        <span>
-            🔒
-        </span>
-        <p class="fs-12 ms-2 mb-0 text-tertiary onest-font">
-            Your information is private and securely handled.
-    
-        </p>
-    </div>
+ 
 </div>
  
     <script>

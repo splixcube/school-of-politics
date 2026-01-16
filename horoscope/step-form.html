@@ -53,8 +53,7 @@
 </head>
 <body>
     <div class="cosmic-background">
-        <div class="cosmic-background-overlay"></div>
-    </div>
+   
     <div class="container" style="z-index: 9;
     position: relative;">
         <div class="row justify-content-center">
@@ -62,24 +61,19 @@
 
             <div class="col-lg-8 col-md-10" id="formSection">
                 <!-- Header Row: Back Button, Logo, Step Count -->
-                <div class="header-row mb-3 d-flex align-items-center justify-content-start">
+                <div class="header-row mb-3 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
                      <button type="button" class="btn btn-back-header p-0" id="backButton" 
                         style="display: none;">
                             <i class="bi bi-arrow-left"></i>
                         </button>
                         <h6 class="fs-16 m-0 fw-600 ms-2" >Horoscope</h6>
+                    </div>
+                    <span class="step-count" id="stepCount">Step 1/5</span>
                  
                 </div>
                 
-                <!-- Progress Bar -->
-                 <div class="d-flex mb-4 align-items-center">
-                    <span class="step-count" id="stepCount">1/5</span>
-                    <div class="progress-container w-100 ms-2">
-                        <div class="progress" style="height: 3px; background-color: var(--secondary);">
-                            <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #F8B239; transition: width 0.3s ease;" id="progressBar"></div>
-                        </div>
-                    </div>
-                 </div>
+             
               
 
                 <!-- Form Container -->
@@ -229,6 +223,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10">
+                    <p class="fs-12 mb-0 text-center text-tertiary onest-font mb-2">
+                        Created by the best vedic astrologers of the country. Get detailed report at ₹299
+                    </p>
                     <div class="form-actions-bottom">
                         <button type="button" class="btn primary-custom" id="nextButton" onclick="nextStep()">Next 
                             <img src="assets/images/arrow-r.svg" alt="Banner" class="img-fluid ms-2">
@@ -242,26 +239,12 @@
             Secure. Takes less than a minute
         </p>
     </div>
-
+</div>
     <script>
         let currentStep = 1;
         const totalSteps = 5;
 
-        function updateProgress() {
-            // Calculate progress percentage based on current step
-            // Step 1 = 20%, Step 2 = 40%, Step 3 = 60%, Step 4 = 80%, Step 5 = 100%
-            const progress = (currentStep / totalSteps) * 100;
-            const progressBar = document.getElementById('progressBar');
-            if (progressBar) {
-                progressBar.style.width = progress + '%';
-                // Update aria attributes for accessibility
-                progressBar.setAttribute('aria-valuenow', currentStep);
-                progressBar.setAttribute('aria-valuemin', 1);
-                progressBar.setAttribute('aria-valuemax', totalSteps);
-            }
-        }
-
-        function showStep(step) {
+       function showStep(step) {
             // Hide all steps
             for (let i = 1; i <= totalSteps; i++) {
                 document.getElementById('step' + i).style.display = 'none';
@@ -276,7 +259,7 @@
             } 
             
             // Update step count
-            document.getElementById('stepCount').textContent = `${step}/${totalSteps}`;
+            document.getElementById('stepCount').textContent = `Step ${step}/${totalSteps}`;
             
             // Show/hide next and submit buttons
             if (step === totalSteps) {
@@ -292,7 +275,6 @@
                 highlightSelectedGender();
             }
             
-            updateProgress();
         }
 
         function clearErrors() {

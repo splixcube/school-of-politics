@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 :root {
     --primary: #602B00;
     --secondary: #FFF9EF;
@@ -60,33 +61,22 @@ p {
     }
 }
 .cosmic-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-   /*  background: radial-gradient(ellipse at center, rgba(95, 149, 152, 0.15) 0%, transparent 70%); */
-    z-index: 0;
-    background-image: url('./assets/images/wrap1.svg');
-    .cosmic-background-overlay{
-        position: absolute;
-        top: 0;
-        left: 0;
+      min-height: 100vh;
         width: 100%;
         height: 100%;
-        background: radial-gradient(50% 50% at 50% 50%, #5E363F 0%, #232121 100%);
-        opacity: .5;
-    }
+        background: linear-gradient(174.3deg, #260F32 -0.99%, #351A22 95.46%);
+     
 }
 
 .primary-custom{
     background: linear-gradient(90deg, #A66531 0%, #FFBA3D 49.27%, #A66531 100%) !important;
-    border: 1px solid !important;
-    border-image-source: linear-gradient(90deg, #FDFDFD 0%, #D9A75F 100%) !important;
+    border: 1px solid #D9A75F !important;
+   /*  border-image-source: linear-gradient(90deg, #FDFDFD 0%, #D9A75F 100%) !important; */
     color: #602B00 !important;
     font-weight: 700 !important;
     font-size: 20px !important;
     border-radius: 8px !important;
+    
 }
 .text-tertiary{
     color: var(--tertiary);
@@ -101,25 +91,17 @@ p {
     margin-top: 150px;
 }
 
-/* Progress Bar */
-.progress-container {
-   /*  background: rgba(29, 84, 109, 0.6); */
-    border-radius: 15px;
-    padding: 0px;
-   /*  backdrop-filter: blur(10px); */
+.title-shadow{
+    text-shadow: 
+    0px 2px 6px rgba(252, 157, 14, 0.6),
+    0px 0px 12px rgba(252, 157, 14, 0.4);
 }
+.title-shadow-light{
+    text-shadow:
+     0px 1px 20px  #FC9D0EA6,
+     0px 0px 20px  #FC9D0EA6;
 
-.progress {
-    border-radius: 10px;
-    overflow: hidden;
 }
-
-.progress-bar {
-    transition: width 0.5s ease;
-}
-
-
-
 /* Form Elements */
 .form-header {
     margin-bottom: 30px;
@@ -444,10 +426,11 @@ input[type="time"].form-input::-webkit-clear-button {
 } */
 
 .step-count {
-    color: var(--textcolor);
+    color: #8694AC;
     font-size: 12px;
     font-weight: 600;
     white-space: nowrap;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 /* Landing Page Styles */
