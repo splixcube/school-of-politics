@@ -1,59 +1,20 @@
 
 <ion-content [fullscreen]="true">
- <div class="wrapper">
-  <div class="overlay-gradient"></div>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12">
-        <h1 class="text-center text-primary leckerli-one-font">amMA</h1>
-      </ion-col>
-    </ion-row>
+ <div class="wrapper position-relative">
+  
 
     <!-- slides -->
-    <ion-row> 
-      <ion-col size="12">
+    
         <div class="slides-container">
           <div class="slides-wrapper" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
             <div class="slide">
-              <div class="slide-img-container">
-                <ion-img src="assets/images/welcome-screen/welcome1.svg"></ion-img>
-              </div>
-
-              <div class="slide-text-container">
-              <ion-text class="slide-text-title">
-                Your health nurtures your baby's body and mind.
-              </ion-text> <br>
-              <ion-text class="slide-text-description">
-                We guide your food, rest, and daily care.
-              </ion-text>
-            </div>
+              <div class="slide-img-container slide-img-1"></div>
             </div>
             <div class="slide">
-              <div class="slide-img-container">
-              <ion-img src="assets/images/welcome-screen/welcome2.svg"></ion-img>
-              </div>
-              <div class="slide-text-container">
-              <ion-text class="slide-text-title">
-                Your health nurtures your baby's body and mind.
-              </ion-text> <br>
-              <ion-text class="slide-text-description">
-                We guide your food, rest, and daily care.
-              </ion-text>
-            </div>
+              <div class="slide-img-container slide-img-2"></div>
             </div>
             <div class="slide">
-              <div class="slide-img-container">
-              <ion-img src="assets/images/welcome-screen/welcome3.svg"></ion-img>
-              </div>
-              <div class="slide-text-container">
-
-              <ion-text class="slide-text-title">
-                Your health nurtures your baby's body and mind.
-              </ion-text> <br>
-              <ion-text class="slide-text-description">
-                We guide your food, rest, and daily care.
-              </ion-text>
-            </div>
+              <div class="slide-img-container slide-img-3"></div>
             </div>
           </div>
         </div>
@@ -66,8 +27,6 @@
           </span>
         }
         </div>
-      </ion-col>
-    </ion-row>
 
     <!-- fixed bottom buttons -->
     <div class="fixed-bottom-buttons">
@@ -88,6 +47,6 @@
     </ion-row>
     </div>
 
-  </ion-grid>
+  
  </div>
 </ion-content>

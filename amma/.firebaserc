@@ -1,5 +1,15 @@
 {
   "projects": {
-    "default": "amma-749f8"
-  }
+    "default": "bhartievents-7ab0d"
+  },
+  "targets": {
+    "bhartievents-7ab0d": {
+      "hosting": {
+        "new-kidstory": [
+          "new-kidstory"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
