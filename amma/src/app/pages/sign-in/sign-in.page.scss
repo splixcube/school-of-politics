@@ -1,0 +1,101 @@
+.wrapper{
+    background-image: url('../../../assets/images/welcome-screen/screen.svg');
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.sign-in-container{
+    margin-top: 130px;
+    text-align: center;
+    .sign-in-title{
+        font-size: 22px;
+        font-weight: 600;
+        color: #000;
+        font-family: var(--font-manrope);
+    }
+    .sign-in-description{
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+        font-family: var(--font-general-sans);
+    }
+    .sign-in-short{
+        font-size: 14px;
+        font-weight: 400;
+        color: #676363;
+        font-family: var(--font-general-sans);
+    }
+}
+
+.form-container {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.mobile-input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-color);
+    border-radius: 12px;
+    padding: 4px 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #EEB482;
+    gap: 12px;
+    
+    .country-code {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text-dark);
+        font-family: var(--font-general-sans);
+        white-space: nowrap;
+        padding-right: 8px;
+    }
+    
+    .separator {
+        width: 1px;
+        height: 24px;
+        background-color: rgba(0, 0, 0, 0.1);
+        flex-shrink: 0;
+    }
+    
+    .sign-in-input {
+        flex: 1;
+        --padding-start: 0;
+        --padding-end: 0;
+        --padding-top: 0;
+        --padding-bottom: 0;
+        --background: transparent;
+        --color: #333;
+        --placeholder-color: #999;
+        --placeholder-opacity: 1;
+        font-size: 16px;
+        font-family: var(--font-general-sans);
+        text-align: left;
+        &::part(native) {
+            padding: 0;
+        }
+    }
+}
+
+.fixed-bottom-buttons {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    background-color: transparent;
+   .primary-custom-button{
+    width: 100%;
+   }
+    .sign-in-terms{
+        font-size: 12px;
+        font-weight: 400;
+        color: #676363;
+        font-family: var(--font-general-sans);
+        display: flex;
+    }
+  }
+  

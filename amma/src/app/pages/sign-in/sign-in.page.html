@@ -1,25 +1,26 @@
 
 <ion-content [fullscreen]="true">
   <div class="wrapper">
-   <div class="overlay-gradient"></div>
    <ion-grid>
-     <ion-row>
-       <ion-col size="12">
-         <h1 class="text-center text-primary leckerli-one-font">amMA</h1>
-       </ion-col>
-     </ion-row>
  
-     <!-- slides -->
+
      <ion-row> 
        <ion-col size="12">
         <div class="sign-in-container">
-          <ion-text class="sign-in-title">Start your motherhood journey</ion-text> <br>
+          <div class="text-center mb-2">
+          <ion-text class="sign-in-title">Start your motherhood journey</ion-text> 
+        </div>
           <ion-text class="sign-in-description">Share your mobile number and receive daily guidance in your motherhood journey</ion-text> <br>
         
           <div class="form-container">
-            <ion-input type="tel" placeholder="Enter your mobile number" class="sign-in-input"></ion-input>
+            <div class="mobile-input-wrapper">
+              <div class="country-code">+91</div>
+              <div class="separator"></div>
+              <ion-input type="tel" placeholder="Enter Mobile Number" class="sign-in-input"></ion-input>
+            </div>
           </div>
-          <ion-text>
+
+          <ion-text class="sign-in-short">
             We’ll send you an OTP to verify your number.
           </ion-text>
 
@@ -32,10 +33,16 @@
      <ion-row>
        <ion-col size="12">
         
-         <ion-button type="button" class="primary-custom-button" 
+         <ion-button type="button" (click)="navigateToVerifyOtp()"
+          class="primary-custom-button" 
         >Continue
          <ion-icon name="arrow-forward-outline" class="text-white" slot="end"></ion-icon>
        </ion-button>
+       </ion-col>
+       <ion-col size="12">
+        <ion-text class="sign-in-terms mx-2">
+          *By signing up, you agree to our Terms & Conditions and Privacy Policy.
+        </ion-text>
        </ion-col>
      </ion-row>
      </div>
