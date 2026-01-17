@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared/shared-module';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verify-otp',
@@ -30,7 +31,7 @@ export class VerifyOtpPage implements OnInit {
 
   otpValue: string = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -38,6 +39,10 @@ export class VerifyOtpPage implements OnInit {
   onOtpChange(otp: string) {
     this.otpValue = otp;
     console.log('OTP entered:', otp);
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/home']);
   }
 
 }

@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "./",
+    "target": "gethoroscope",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

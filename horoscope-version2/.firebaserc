@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "bhartievents-7ab0d"
+  },
+  "targets": {
+    "bhartievents-7ab0d": {
+      "hosting": {
+        "gethoroscope": [
+          "gethoroscope"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
